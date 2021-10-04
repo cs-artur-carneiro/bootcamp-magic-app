@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,13 @@
 		621DA3D02707A075004A04CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 621DA3CE2707A075004A04CF /* LaunchScreen.storyboard */; };
 		621DA3DB2707A076004A04CF /* magic_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3DA2707A076004A04CF /* magic_appTests.swift */; };
 		621DA3E62707A076004A04CF /* magic_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3E52707A076004A04CF /* magic_appUITests.swift */; };
+		62F1F04A270B646600C6AAC4 /* MagicNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 62F1F049270B646600C6AAC4 /* MagicNetwork */; };
+		62F1F055270B64B500C6AAC4 /* SetsResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F054270B64B500C6AAC4 /* SetsResource.swift */; };
+		62F1F065270B685A00C6AAC4 /* MagicSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F064270B685A00C6AAC4 /* MagicSetsViewModel.swift */; };
+		62F1F07A270B783A00C6AAC4 /* MagicSetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F079270B783A00C6AAC4 /* MagicSetResponse.swift */; };
+		62F1F087270B824200C6AAC4 /* MagicSetsLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F086270B824200C6AAC4 /* MagicSetsLogicController.swift */; };
+		62F1F098270B981100C6AAC4 /* MagicSetsLogicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F097270B981100C6AAC4 /* MagicSetsLogicModel.swift */; };
+		62F1F0A0270B982A00C6AAC4 /* MagicSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F09F270B982A00C6AAC4 /* MagicSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,12 @@
 		621DA3E12707A076004A04CF /* magic-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "magic-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		621DA3E52707A076004A04CF /* magic_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magic_appUITests.swift; sourceTree = "<group>"; };
 		621DA3E72707A076004A04CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62F1F054270B64B500C6AAC4 /* SetsResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsResource.swift; sourceTree = "<group>"; };
+		62F1F064270B685A00C6AAC4 /* MagicSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewModel.swift; sourceTree = "<group>"; };
+		62F1F079270B783A00C6AAC4 /* MagicSetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetResponse.swift; sourceTree = "<group>"; };
+		62F1F086270B824200C6AAC4 /* MagicSetsLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsLogicController.swift; sourceTree = "<group>"; };
+		62F1F097270B981100C6AAC4 /* MagicSetsLogicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsLogicModel.swift; sourceTree = "<group>"; };
+		62F1F09F270B982A00C6AAC4 /* MagicSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62F1F04A270B646600C6AAC4 /* MagicNetwork in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +121,10 @@
 		621DA3BF2707A073004A04CF /* magic-app */ = {
 			isa = PBXGroup;
 			children = (
+				62F1F085270B822C00C6AAC4 /* LogicControllers */,
+				62F1F077270B782300C6AAC4 /* Models */,
+				62F1F063270B682E00C6AAC4 /* ViewModels */,
+				62F1F053270B648800C6AAC4 /* Network */,
 				621DA3C02707A073004A04CF /* AppDelegate.swift */,
 				621DA3C22707A073004A04CF /* SceneDelegate.swift */,
 				621DA3C42707A073004A04CF /* ViewController.swift */,
@@ -136,6 +154,64 @@
 			path = "magic-appUITests";
 			sourceTree = "<group>";
 		};
+		62F1F053270B648800C6AAC4 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				62F1F05F270B67D500C6AAC4 /* Resources */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		62F1F05F270B67D500C6AAC4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				62F1F054270B64B500C6AAC4 /* SetsResource.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		62F1F063270B682E00C6AAC4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				62F1F064270B685A00C6AAC4 /* MagicSetsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		62F1F077270B782300C6AAC4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				62F1F096270B980000C6AAC4 /* Logic */,
+				62F1F078270B782800C6AAC4 /* Responses */,
+				62F1F09F270B982A00C6AAC4 /* MagicSet.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		62F1F078270B782800C6AAC4 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				62F1F079270B783A00C6AAC4 /* MagicSetResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		62F1F085270B822C00C6AAC4 /* LogicControllers */ = {
+			isa = PBXGroup;
+			children = (
+				62F1F086270B824200C6AAC4 /* MagicSetsLogicController.swift */,
+			);
+			path = LogicControllers;
+			sourceTree = "<group>";
+		};
+		62F1F096270B980000C6AAC4 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				62F1F097270B981100C6AAC4 /* MagicSetsLogicModel.swift */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -153,6 +229,7 @@
 			);
 			name = "magic-app";
 			packageProductDependencies = (
+				62F1F049270B646600C6AAC4 /* MagicNetwork */,
 			);
 			productName = "magic-app";
 			productReference = 621DA3BD2707A073004A04CF /* magic-app.app */;
@@ -269,8 +346,14 @@
 			files = (
 				621DA3C52707A073004A04CF /* ViewController.swift in Sources */,
 				621DA3C12707A073004A04CF /* AppDelegate.swift in Sources */,
+				62F1F055270B64B500C6AAC4 /* SetsResource.swift in Sources */,
+				62F1F098270B981100C6AAC4 /* MagicSetsLogicModel.swift in Sources */,
+				62F1F087270B824200C6AAC4 /* MagicSetsLogicController.swift in Sources */,
 				621DA3C32707A073004A04CF /* SceneDelegate.swift in Sources */,
 				621DA3CB2707A073004A04CF /* magic_app.xcdatamodeld in Sources */,
+				62F1F07A270B783A00C6AAC4 /* MagicSetResponse.swift in Sources */,
+				62F1F0A0270B982A00C6AAC4 /* MagicSet.swift in Sources */,
+				62F1F065270B685A00C6AAC4 /* MagicSetsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +674,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		62F1F049270B646600C6AAC4 /* MagicNetwork */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MagicNetwork;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		621DA3C92707A073004A04CF /* magic_app.xcdatamodeld */ = {

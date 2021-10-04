@@ -5,4 +5,5 @@ public enum MagicNetworkError: Error {
     case requestFailed
     case unexpectedResponseType
     case statusCodeOutOfSuccessRange
+    case decodingFailed
 }

@@ -18,7 +18,8 @@ final class MagicNetworkTests: XCTestCase {
     func test_request_when_itSucceeds() throws {
         let url = try XCTUnwrap(URL(string: "URL"))
         let expectedResponse = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
-        let expectedData = Data()
+        let expectedDummy = DecodingDummy(dummy: true)
+        let expectedData = try JSONEncoder().encode(expectedDummy)
         
         httpMock
             .setUp()
@@ -30,23 +31,22 @@ final class MagicNetworkTests: XCTestCase {
         
         let expectedActions: [HTTPServiceMockAction] = [.request(URLRequest(url: url)),
                                                         .payload(expectedData, expectedResponse, nil)]
-        var dataFromResult: Data?
+        var dataFromResult: DecodingDummy?
         
-        sut.request(ResourceStub(url: "URL")) {
+        sut.request(ResourceStub(url: "URL"), ofType: DecodingDummy.self) {
             if case .success(let result) = $0 {
                 dataFromResult = result
             }
         }
         
         XCTAssertNotNil(dataFromResult)
-        XCTAssertEqual(dataFromResult, expectedData)
+        XCTAssertEqual(dataFromResult, expectedDummy)
         XCTAssertTrue(httpMock.assert(expectedActions))
     }
     
     func test_request_when_itSucceeds_withoutData() throws {
         let url = try XCTUnwrap(URL(string: "URL"))
         let expectedResponse = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)
-        let expectedData = Data()
         
         httpMock
             .setUp()
@@ -60,14 +60,13 @@ final class MagicNetworkTests: XCTestCase {
                                                         .payload(nil, expectedResponse, nil)]
         var dataFromResult: Data?
         
-        sut.request(ResourceStub(url: "URL")) {
+        sut.request(ResourceStub(url: "URL"), ofType: Data.self) {
             if case .success(let result) = $0 {
                 dataFromResult = result
             }
         }
         
-        XCTAssertNotNil(dataFromResult)
-        XCTAssertEqual(dataFromResult, expectedData)
+        XCTAssertNil(dataFromResult)
         XCTAssertTrue(httpMock.assert(expectedActions))
     }
     
@@ -85,7 +84,7 @@ final class MagicNetworkTests: XCTestCase {
         let expectedActions: [HTTPServiceMockAction] = []
         var errorFromResult: MagicNetworkError?
         
-        sut.request(ResourceStub(url: "")) {
+        sut.request(ResourceStub(url: ""), ofType: Data.self) {
             if case .failure(let result) = $0 {
                 errorFromResult = result
             }
@@ -112,7 +111,7 @@ final class MagicNetworkTests: XCTestCase {
                                                         .payload(nil, nil, NSError())]
         var errorFromResult: MagicNetworkError?
         
-        sut.request(ResourceStub(url: "URL")) {
+        sut.request(ResourceStub(url: "URL"), ofType: Data.self) {
             if case .failure(let result) = $0 {
                 errorFromResult = result
             }
@@ -140,7 +139,7 @@ final class MagicNetworkTests: XCTestCase {
                                                         .payload(nil, expectedResponse, nil)]
         var errorFromResult: MagicNetworkError?
         
-        sut.request(ResourceStub(url: "URL")) {
+        sut.request(ResourceStub(url: "URL"), ofType: Data.self) {
             if case .failure(let result) = $0 {
                 errorFromResult = result
             }
@@ -168,7 +167,7 @@ final class MagicNetworkTests: XCTestCase {
                                                         .payload(Data(), expectedResponse, nil)]
         var errorFromResult: MagicNetworkError?
         
-        sut.request(ResourceStub(url: "URL")) {
+        sut.request(ResourceStub(url: "URL"), ofType: Data.self) {
             if case .failure(let result) = $0 {
                 errorFromResult = result
             }

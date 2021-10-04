@@ -1,17 +1,20 @@
 import Foundation
 
 public protocol MagicNetworkProtocol {
-    func request(_ resource: Resource, completion: @escaping (Result<Data, MagicNetworkError>) -> Void)
+    func request<T: Decodable>(_ resource: Resource, ofType type: T.Type, completion: @escaping (Result<T?, MagicNetworkError>) -> Void)
 }
 
 public struct MagicNetwork: MagicNetworkProtocol {
     private let http: HTTPService
+    private let decoder: JSONDecoder
     
-    public init(http: HTTPService = URLSession.shared) {
+    public init(http: HTTPService = URLSession.shared,
+                decoder: JSONDecoder = JSONDecoder()) {
         self.http = http
+        self.decoder = decoder
     }
     
-    public func request(_ resource: Resource, completion: @escaping (Result<Data, MagicNetworkError>) -> Void) {
+    public func request<T: Decodable>(_ resource: Resource, ofType type: T.Type, completion: @escaping (Result<T?, MagicNetworkError>) -> Void) {
         guard let request = makeURLRequest(from: resource) else {
             return completion(.failure(.invalidResource))
         }
@@ -27,10 +30,15 @@ public struct MagicNetwork: MagicNetworkProtocol {
                 }
                 
                 guard let data = data else {
-                    return completion(.success(Data()))
+                    return completion(.success(nil))
                 }
                 
-                return completion(.success(data))
+                do {
+                    let decoded = try decoder.decode(T.self, from: data)
+                    return completion(.success(decoded))
+                } catch {
+                    return completion(.failure(.decodingFailed))
+                }
             } else {
                 return completion(.failure(.unexpectedResponseType))
             }
