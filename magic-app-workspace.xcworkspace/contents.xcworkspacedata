@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:magic-mock/magic-mock.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:network-layer/magic-network/magic-network.xcodeproj">
    </FileRef>
    <FileRef

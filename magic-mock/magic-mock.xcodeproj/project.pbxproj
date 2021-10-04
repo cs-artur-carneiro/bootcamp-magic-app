@@ -7,28 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62F1EFCF270B357400C6AAC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1EFCE270B357400C6AAC4 /* AppDelegate.swift */; };
-		62F1EFD1270B357400C6AAC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1EFD0270B357400C6AAC4 /* SceneDelegate.swift */; };
-		62F1EFD3270B357400C6AAC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1EFD2270B357400C6AAC4 /* ViewController.swift */; };
-		62F1EFD6270B357400C6AAC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F1EFD4270B357400C6AAC4 /* Main.storyboard */; };
-		62F1EFD8270B357600C6AAC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F1EFD7270B357600C6AAC4 /* Assets.xcassets */; };
-		62F1EFDB270B357600C6AAC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F1EFD9270B357600C6AAC4 /* LaunchScreen.storyboard */; };
+		62F1F01F270B3D0200C6AAC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F01E270B3D0200C6AAC4 /* AppDelegate.swift */; };
+		62F1F021270B3D0200C6AAC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F020270B3D0200C6AAC4 /* SceneDelegate.swift */; };
+		62F1F023270B3D0200C6AAC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F022270B3D0200C6AAC4 /* ViewController.swift */; };
+		62F1F026270B3D0200C6AAC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F1F024270B3D0200C6AAC4 /* Main.storyboard */; };
+		62F1F028270B3D0300C6AAC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62F1F027270B3D0300C6AAC4 /* Assets.xcassets */; };
+		62F1F02B270B3D0300C6AAC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62F1F029270B3D0300C6AAC4 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		62F1EFCB270B357400C6AAC4 /* magic-network.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "magic-network.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		62F1EFCE270B357400C6AAC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		62F1EFD0270B357400C6AAC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		62F1EFD2270B357400C6AAC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		62F1EFD5270B357400C6AAC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		62F1EFD7270B357600C6AAC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		62F1EFDA270B357600C6AAC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		62F1EFDC270B357600C6AAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		62F1EFE3270B357E00C6AAC4 /* MagicNetwork */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MagicNetwork; path = ../MagicNetwork; sourceTree = "<group>"; };
+		62F1F01B270B3D0200C6AAC4 /* magic-mock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "magic-mock.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		62F1F01E270B3D0200C6AAC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		62F1F020270B3D0200C6AAC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		62F1F022270B3D0200C6AAC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		62F1F025270B3D0200C6AAC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		62F1F027270B3D0300C6AAC4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		62F1F02A270B3D0300C6AAC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		62F1F02C270B3D0300C6AAC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62F1F033270B3D2600C6AAC4 /* MagicMock */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MagicMock; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		62F1EFC8270B357400C6AAC4 /* Frameworks */ = {
+		62F1F018270B3D0200C6AAC4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -38,82 +38,72 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		62F1EFC2270B357400C6AAC4 = {
+		62F1F012270B3D0200C6AAC4 = {
 			isa = PBXGroup;
 			children = (
-				62F1EFE3270B357E00C6AAC4 /* MagicNetwork */,
-				62F1EFCD270B357400C6AAC4 /* magic-network */,
-				62F1EFCC270B357400C6AAC4 /* Products */,
-				62F1F03A270B3EF700C6AAC4 /* Frameworks */,
+				62F1F033270B3D2600C6AAC4 /* MagicMock */,
+				62F1F01D270B3D0200C6AAC4 /* magic-mock */,
+				62F1F01C270B3D0200C6AAC4 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		62F1EFCC270B357400C6AAC4 /* Products */ = {
+		62F1F01C270B3D0200C6AAC4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				62F1EFCB270B357400C6AAC4 /* magic-network.app */,
+				62F1F01B270B3D0200C6AAC4 /* magic-mock.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		62F1EFCD270B357400C6AAC4 /* magic-network */ = {
+		62F1F01D270B3D0200C6AAC4 /* magic-mock */ = {
 			isa = PBXGroup;
 			children = (
-				62F1EFCE270B357400C6AAC4 /* AppDelegate.swift */,
-				62F1EFD0270B357400C6AAC4 /* SceneDelegate.swift */,
-				62F1EFD2270B357400C6AAC4 /* ViewController.swift */,
-				62F1EFD4270B357400C6AAC4 /* Main.storyboard */,
-				62F1EFD7270B357600C6AAC4 /* Assets.xcassets */,
-				62F1EFD9270B357600C6AAC4 /* LaunchScreen.storyboard */,
-				62F1EFDC270B357600C6AAC4 /* Info.plist */,
+				62F1F01E270B3D0200C6AAC4 /* AppDelegate.swift */,
+				62F1F020270B3D0200C6AAC4 /* SceneDelegate.swift */,
+				62F1F022270B3D0200C6AAC4 /* ViewController.swift */,
+				62F1F024270B3D0200C6AAC4 /* Main.storyboard */,
+				62F1F027270B3D0300C6AAC4 /* Assets.xcassets */,
+				62F1F029270B3D0300C6AAC4 /* LaunchScreen.storyboard */,
+				62F1F02C270B3D0300C6AAC4 /* Info.plist */,
 			);
-			path = "magic-network";
-			sourceTree = "<group>";
-		};
-		62F1F03A270B3EF700C6AAC4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
+			path = "magic-mock";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		62F1EFCA270B357400C6AAC4 /* magic-network */ = {
+		62F1F01A270B3D0200C6AAC4 /* magic-mock */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 62F1EFDF270B357600C6AAC4 /* Build configuration list for PBXNativeTarget "magic-network" */;
+			buildConfigurationList = 62F1F02F270B3D0300C6AAC4 /* Build configuration list for PBXNativeTarget "magic-mock" */;
 			buildPhases = (
-				62F1EFC7270B357400C6AAC4 /* Sources */,
-				62F1EFC8270B357400C6AAC4 /* Frameworks */,
-				62F1EFC9270B357400C6AAC4 /* Resources */,
+				62F1F017270B3D0200C6AAC4 /* Sources */,
+				62F1F018270B3D0200C6AAC4 /* Frameworks */,
+				62F1F019270B3D0200C6AAC4 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "magic-network";
-			packageProductDependencies = (
-			);
-			productName = "magic-network";
-			productReference = 62F1EFCB270B357400C6AAC4 /* magic-network.app */;
+			name = "magic-mock";
+			productName = "magic-mock";
+			productReference = 62F1F01B270B3D0200C6AAC4 /* magic-mock.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		62F1EFC3270B357400C6AAC4 /* Project object */ = {
+		62F1F013270B3D0200C6AAC4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
-					62F1EFCA270B357400C6AAC4 = {
+					62F1F01A270B3D0200C6AAC4 = {
 						CreatedOnToolsVersion = 12.4;
 					};
 				};
 			};
-			buildConfigurationList = 62F1EFC6270B357400C6AAC4 /* Build configuration list for PBXProject "magic-network" */;
+			buildConfigurationList = 62F1F016270B3D0200C6AAC4 /* Build configuration list for PBXProject "magic-mock" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -121,55 +111,55 @@
 				en,
 				Base,
 			);
-			mainGroup = 62F1EFC2270B357400C6AAC4;
-			productRefGroup = 62F1EFCC270B357400C6AAC4 /* Products */;
+			mainGroup = 62F1F012270B3D0200C6AAC4;
+			productRefGroup = 62F1F01C270B3D0200C6AAC4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				62F1EFCA270B357400C6AAC4 /* magic-network */,
+				62F1F01A270B3D0200C6AAC4 /* magic-mock */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		62F1EFC9270B357400C6AAC4 /* Resources */ = {
+		62F1F019270B3D0200C6AAC4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62F1EFDB270B357600C6AAC4 /* LaunchScreen.storyboard in Resources */,
-				62F1EFD8270B357600C6AAC4 /* Assets.xcassets in Resources */,
-				62F1EFD6270B357400C6AAC4 /* Main.storyboard in Resources */,
+				62F1F02B270B3D0300C6AAC4 /* LaunchScreen.storyboard in Resources */,
+				62F1F028270B3D0300C6AAC4 /* Assets.xcassets in Resources */,
+				62F1F026270B3D0200C6AAC4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		62F1EFC7270B357400C6AAC4 /* Sources */ = {
+		62F1F017270B3D0200C6AAC4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62F1EFD3270B357400C6AAC4 /* ViewController.swift in Sources */,
-				62F1EFCF270B357400C6AAC4 /* AppDelegate.swift in Sources */,
-				62F1EFD1270B357400C6AAC4 /* SceneDelegate.swift in Sources */,
+				62F1F023270B3D0200C6AAC4 /* ViewController.swift in Sources */,
+				62F1F01F270B3D0200C6AAC4 /* AppDelegate.swift in Sources */,
+				62F1F021270B3D0200C6AAC4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		62F1EFD4270B357400C6AAC4 /* Main.storyboard */ = {
+		62F1F024270B3D0200C6AAC4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				62F1EFD5270B357400C6AAC4 /* Base */,
+				62F1F025270B3D0200C6AAC4 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		62F1EFD9270B357600C6AAC4 /* LaunchScreen.storyboard */ = {
+		62F1F029270B3D0300C6AAC4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				62F1EFDA270B357600C6AAC4 /* Base */,
+				62F1F02A270B3D0300C6AAC4 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -177,7 +167,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		62F1EFDD270B357600C6AAC4 /* Debug */ = {
+		62F1F02D270B3D0300C6AAC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -238,7 +228,7 @@
 			};
 			name = Debug;
 		};
-		62F1EFDE270B357600C6AAC4 /* Release */ = {
+		62F1F02E270B3D0300C6AAC4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -293,36 +283,36 @@
 			};
 			name = Release;
 		};
-		62F1EFE0270B357600C6AAC4 /* Debug */ = {
+		62F1F030270B3D0300C6AAC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "magic-network/Info.plist";
+				INFOPLIST_FILE = "magic-mock/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "concrete.bootcamp.magic-network";
+				PRODUCT_BUNDLE_IDENTIFIER = "concrete.bootcamp.magic-mock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		62F1EFE1270B357600C6AAC4 /* Release */ = {
+		62F1F031270B3D0300C6AAC4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "magic-network/Info.plist";
+				INFOPLIST_FILE = "magic-mock/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "concrete.bootcamp.magic-network";
+				PRODUCT_BUNDLE_IDENTIFIER = "concrete.bootcamp.magic-mock";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -332,25 +322,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		62F1EFC6270B357400C6AAC4 /* Build configuration list for PBXProject "magic-network" */ = {
+		62F1F016270B3D0200C6AAC4 /* Build configuration list for PBXProject "magic-mock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				62F1EFDD270B357600C6AAC4 /* Debug */,
-				62F1EFDE270B357600C6AAC4 /* Release */,
+				62F1F02D270B3D0300C6AAC4 /* Debug */,
+				62F1F02E270B3D0300C6AAC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		62F1EFDF270B357600C6AAC4 /* Build configuration list for PBXNativeTarget "magic-network" */ = {
+		62F1F02F270B3D0300C6AAC4 /* Build configuration list for PBXNativeTarget "magic-mock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				62F1EFE0270B357600C6AAC4 /* Debug */,
-				62F1EFE1270B357600C6AAC4 /* Release */,
+				62F1F030270B3D0300C6AAC4 /* Debug */,
+				62F1F031270B3D0300C6AAC4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 62F1EFC3270B357400C6AAC4 /* Project object */;
+	rootObject = 62F1F013270B3D0200C6AAC4 /* Project object */;
 }

@@ -1,12 +1,5 @@
 import Foundation
 
-public enum MagicNetworkError: Error {
-    case invalidResource
-    case requestFailed
-    case unexpectedResponseType
-    case statusCodeOutOfSuccessRange
-}
-
 public protocol MagicNetworkProtocol {
     func request(_ resource: Resource, completion: @escaping (Result<Data, MagicNetworkError>) -> Void)
 }
@@ -25,7 +18,7 @@ public struct MagicNetwork: MagicNetworkProtocol {
         
         http.dataTask(with: request) { (data, response, error) in
             if error != nil {
-                completion(.failure(.requestFailed))
+                return completion(.failure(.requestFailed))
             }
             
             if let httpResponse = response as? HTTPURLResponse {
@@ -37,9 +30,9 @@ public struct MagicNetwork: MagicNetworkProtocol {
                     return completion(.success(Data()))
                 }
                 
-                completion(.success(data))
+                return completion(.success(data))
             } else {
-                completion(.failure(.unexpectedResponseType))
+                return completion(.failure(.unexpectedResponseType))
             }
         }.resume()
     }
@@ -50,36 +43,12 @@ public struct MagicNetwork: MagicNetworkProtocol {
         }
         
         var request = URLRequest(url: url)
-        request.httpMethod = resource.method
+        request.httpMethod = resource.method.rawValue
         request.httpBody = resource.body
         resource.headers?.forEach {
             request.addValue($1, forHTTPHeaderField: $0)
         }
         
         return request
-    }
-}
-
-public protocol HTTPService {
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
-}
-
-extension URLSession: HTTPService {}
-
-public protocol Resource {
-    var url: String { get }
-    var method: String { get }
-    var body: Data? { get }
-    var headers: [String: String]? { get }
-    var successCodeRange: ClosedRange<Int> { get }
-}
-
-public extension Resource {
-    var successCodeRange: ClosedRange<Int> {
-        return 200...299
-    }
-    
-    var headers: [String: String]? {
-        return nil
     }
 }
