@@ -12,7 +12,7 @@ final class HTTPServiceMock: HTTPService, MagicMock {
     private var urlResponse: URLResponse?
     private var error: Error?
 
-    func arrange() -> ArrangementProxy<Arrangement> {
+    func setUp() -> ArrangementProxy<Arrangement> {
         let proxy = ArrangementProxy<Arrangement>([]) { [weak self] arrangements in
             arrangements.forEach { [weak self] in
                 switch $0 {

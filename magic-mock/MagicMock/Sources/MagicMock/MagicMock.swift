@@ -2,7 +2,7 @@ public protocol MagicMock: AnyObject {
     associatedtype Action: Equatable
     associatedtype Arrangement
     var actions: [Action] { get set }
-    func arrange() -> ArrangementProxy<Arrangement>
+    func setUp() -> ArrangementProxy<Arrangement>
     func clearArrangements()
     func clearActions()
     func assert(_ actions: [Action]) -> Bool

@@ -21,10 +21,10 @@ final class MagicNetworkTests: XCTestCase {
         let expectedData = Data()
         
         httpMock
-            .arrange()
-            .act(.data(expectedData))
-            .act(.urlResponse(expectedResponse))
-            .act(.error(nil))
+            .setUp()
+            .arrange(.data(expectedData))
+            .arrange(.urlResponse(expectedResponse))
+            .arrange(.error(nil))
             .execute()
         
         
@@ -49,10 +49,10 @@ final class MagicNetworkTests: XCTestCase {
         let expectedData = Data()
         
         httpMock
-            .arrange()
-            .act(.data(nil))
-            .act(.urlResponse(expectedResponse))
-            .act(.error(nil))
+            .setUp()
+            .arrange(.data(nil))
+            .arrange(.urlResponse(expectedResponse))
+            .arrange(.error(nil))
             .execute()
         
         
@@ -75,10 +75,10 @@ final class MagicNetworkTests: XCTestCase {
         let expectedError = MagicNetworkError.invalidResource
         
         httpMock
-            .arrange()
-            .act(.data(nil))
-            .act(.urlResponse(nil))
-            .act(.error(MagicNetworkError.invalidResource))
+            .setUp()
+            .arrange(.data(nil))
+            .arrange(.urlResponse(nil))
+            .arrange(.error(MagicNetworkError.invalidResource))
             .execute()
         
         
@@ -101,10 +101,10 @@ final class MagicNetworkTests: XCTestCase {
         let expectedError = MagicNetworkError.requestFailed
         
         httpMock
-            .arrange()
-            .act(.data(nil))
-            .act(.urlResponse(nil))
-            .act(.error(NSError()))
+            .setUp()
+            .arrange(.data(nil))
+            .arrange(.urlResponse(nil))
+            .arrange(.error(NSError()))
             .execute()
         
         
@@ -129,10 +129,10 @@ final class MagicNetworkTests: XCTestCase {
         let expectedError = MagicNetworkError.unexpectedResponseType
         
         httpMock
-            .arrange()
-            .act(.data(nil))
-            .act(.urlResponse(expectedResponse))
-            .act(.error(nil))
+            .setUp()
+            .arrange(.data(nil))
+            .arrange(.urlResponse(expectedResponse))
+            .arrange(.error(nil))
             .execute()
         
         
@@ -157,10 +157,10 @@ final class MagicNetworkTests: XCTestCase {
         let expectedError = MagicNetworkError.statusCodeOutOfSuccessRange
         
         httpMock
-            .arrange()
-            .act(.data(Data()))
-            .act(.urlResponse(expectedResponse))
-            .act(.error(nil))
+            .setUp()
+            .arrange(.data(Data()))
+            .arrange(.urlResponse(expectedResponse))
+            .arrange(.error(nil))
             .execute()
         
         

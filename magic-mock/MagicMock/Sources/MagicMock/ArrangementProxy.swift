@@ -9,7 +9,7 @@ public struct ArrangementProxy<T> {
         self.executionHandler = executionHandler
     }
     
-    public func act(_ arrangement: T) -> ArrangementProxy<T> {
+    public func arrange(_ arrangement: T) -> ArrangementProxy<T> {
         var mutableArrangements = arrangements
         mutableArrangements.append(arrangement)
         return ArrangementProxy<T>(mutableArrangements, executionHandler: executionHandler)
