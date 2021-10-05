@@ -1,5 +1,5 @@
 import Foundation
 
-struct MagicSet: Decodable {
+struct MagicSet: Decodable, Equatable {
     let name: String
 }

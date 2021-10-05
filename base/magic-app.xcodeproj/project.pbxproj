@@ -15,13 +15,17 @@
 		621DA3D02707A075004A04CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 621DA3CE2707A075004A04CF /* LaunchScreen.storyboard */; };
 		621DA3DB2707A076004A04CF /* magic_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3DA2707A076004A04CF /* magic_appTests.swift */; };
 		621DA3E62707A076004A04CF /* magic_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3E52707A076004A04CF /* magic_appUITests.swift */; };
-		62F1F04A270B646600C6AAC4 /* MagicNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 62F1F049270B646600C6AAC4 /* MagicNetwork */; };
+		62951699270C9DAD00CAB088 /* MagicMock in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 62951698270C9DAD00CAB088 /* MagicMock */; };
+		629516C4270C9F8900CAB088 /* MagicNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 629516C3270C9F8900CAB088 /* MagicNetwork */; };
+		629516C9270CAEB200CAB088 /* MagicSetsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629516C8270CAEB200CAB088 /* MagicSetsViewModelTests.swift */; };
+		629516D3270CAFA100CAB088 /* MagicNetworkProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629516D2270CAFA100CAB088 /* MagicNetworkProtocolMock.swift */; };
 		62F1F055270B64B500C6AAC4 /* SetsResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F054270B64B500C6AAC4 /* SetsResource.swift */; };
 		62F1F065270B685A00C6AAC4 /* MagicSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F064270B685A00C6AAC4 /* MagicSetsViewModel.swift */; };
 		62F1F07A270B783A00C6AAC4 /* MagicSetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F079270B783A00C6AAC4 /* MagicSetResponse.swift */; };
 		62F1F087270B824200C6AAC4 /* MagicSetsLogicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F086270B824200C6AAC4 /* MagicSetsLogicController.swift */; };
 		62F1F098270B981100C6AAC4 /* MagicSetsLogicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F097270B981100C6AAC4 /* MagicSetsLogicModel.swift */; };
 		62F1F0A0270B982A00C6AAC4 /* MagicSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F09F270B982A00C6AAC4 /* MagicSet.swift */; };
+		62F1F0A6270C81EC00C6AAC4 /* MagicSetsLogicControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F0A5270C81EC00C6AAC4 /* MagicSetsLogicControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,12 +60,17 @@
 		621DA3E12707A076004A04CF /* magic-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "magic-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		621DA3E52707A076004A04CF /* magic_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magic_appUITests.swift; sourceTree = "<group>"; };
 		621DA3E72707A076004A04CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62951694270C9D9C00CAB088 /* MagicMock */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MagicMock; path = ../MagicMock; sourceTree = "<group>"; };
+		6295169D270C9DB800CAB088 /* MagicNetwork */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MagicNetwork; path = ../MagicNetwork; sourceTree = "<group>"; };
+		629516C8270CAEB200CAB088 /* MagicSetsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewModelTests.swift; sourceTree = "<group>"; };
+		629516D2270CAFA100CAB088 /* MagicNetworkProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicNetworkProtocolMock.swift; sourceTree = "<group>"; };
 		62F1F054270B64B500C6AAC4 /* SetsResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsResource.swift; sourceTree = "<group>"; };
 		62F1F064270B685A00C6AAC4 /* MagicSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewModel.swift; sourceTree = "<group>"; };
 		62F1F079270B783A00C6AAC4 /* MagicSetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetResponse.swift; sourceTree = "<group>"; };
 		62F1F086270B824200C6AAC4 /* MagicSetsLogicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsLogicController.swift; sourceTree = "<group>"; };
 		62F1F097270B981100C6AAC4 /* MagicSetsLogicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsLogicModel.swift; sourceTree = "<group>"; };
 		62F1F09F270B982A00C6AAC4 /* MagicSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSet.swift; sourceTree = "<group>"; };
+		62F1F0A5270C81EC00C6AAC4 /* MagicSetsLogicControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsLogicControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62F1F04A270B646600C6AAC4 /* MagicNetwork in Frameworks */,
+				629516C4270C9F8900CAB088 /* MagicNetwork in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62951699270C9DAD00CAB088 /* MagicMock in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,13 +100,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		621C42DB270B29740087FFBD /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		621DA3B42707A073004A04CF = {
 			isa = PBXGroup;
 			children = (
@@ -104,7 +107,7 @@
 				621DA3D92707A076004A04CF /* magic-appTests */,
 				621DA3E42707A076004A04CF /* magic-appUITests */,
 				621DA3BE2707A073004A04CF /* Products */,
-				621C42DB270B29740087FFBD /* Frameworks */,
+				62951648270C995B00CAB088 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -139,6 +142,9 @@
 		621DA3D92707A076004A04CF /* magic-appTests */ = {
 			isa = PBXGroup;
 			children = (
+				629516D0270CAEFB00CAB088 /* Doubles */,
+				62F1F0AD270C8F7A00C6AAC4 /* ViewModels */,
+				62F1F0A4270C81D800C6AAC4 /* LogicControllers */,
 				621DA3DA2707A076004A04CF /* magic_appTests.swift */,
 				621DA3DC2707A076004A04CF /* Info.plist */,
 			);
@@ -152,6 +158,31 @@
 				621DA3E72707A076004A04CF /* Info.plist */,
 			);
 			path = "magic-appUITests";
+			sourceTree = "<group>";
+		};
+		62951648270C995B00CAB088 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6295169D270C9DB800CAB088 /* MagicNetwork */,
+				62951694270C9D9C00CAB088 /* MagicMock */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		629516D0270CAEFB00CAB088 /* Doubles */ = {
+			isa = PBXGroup;
+			children = (
+				629516D1270CAF0A00CAB088 /* Mocks */,
+			);
+			path = Doubles;
+			sourceTree = "<group>";
+		};
+		629516D1270CAF0A00CAB088 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				629516D2270CAFA100CAB088 /* MagicNetworkProtocolMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		62F1F053270B648800C6AAC4 /* Network */ = {
@@ -212,6 +243,22 @@
 			path = Logic;
 			sourceTree = "<group>";
 		};
+		62F1F0A4270C81D800C6AAC4 /* LogicControllers */ = {
+			isa = PBXGroup;
+			children = (
+				62F1F0A5270C81EC00C6AAC4 /* MagicSetsLogicControllerTests.swift */,
+			);
+			path = LogicControllers;
+			sourceTree = "<group>";
+		};
+		62F1F0AD270C8F7A00C6AAC4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				629516C8270CAEB200CAB088 /* MagicSetsViewModelTests.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -229,7 +276,7 @@
 			);
 			name = "magic-app";
 			packageProductDependencies = (
-				62F1F049270B646600C6AAC4 /* MagicNetwork */,
+				629516C3270C9F8900CAB088 /* MagicNetwork */,
 			);
 			productName = "magic-app";
 			productReference = 621DA3BD2707A073004A04CF /* magic-app.app */;
@@ -249,6 +296,9 @@
 				621DA3D82707A076004A04CF /* PBXTargetDependency */,
 			);
 			name = "magic-appTests";
+			packageProductDependencies = (
+				62951698270C9DAD00CAB088 /* MagicMock */,
+			);
 			productName = "magic-appTests";
 			productReference = 621DA3D62707A076004A04CF /* magic-appTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -362,6 +412,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				621DA3DB2707A076004A04CF /* magic_appTests.swift in Sources */,
+				62F1F0A6270C81EC00C6AAC4 /* MagicSetsLogicControllerTests.swift in Sources */,
+				629516D3270CAFA100CAB088 /* MagicNetworkProtocolMock.swift in Sources */,
+				629516C9270CAEB200CAB088 /* MagicSetsViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,7 +729,11 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		62F1F049270B646600C6AAC4 /* MagicNetwork */ = {
+		62951698270C9DAD00CAB088 /* MagicMock */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MagicMock;
+		};
+		629516C3270C9F8900CAB088 /* MagicNetwork */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MagicNetwork;
 		};

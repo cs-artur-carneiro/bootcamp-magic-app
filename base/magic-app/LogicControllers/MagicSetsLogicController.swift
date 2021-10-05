@@ -1,17 +1,18 @@
 import Foundation
 
 struct MagicSetsLogicController {
-    func update(_ model: MagicSetsLogicModel, _ event: Event) -> (model: MagicSetsLogicModel, effect: Effect) {
+    func update(_ model: MagicSetsLogicModel, _ event: Event) -> Update {
         switch event {
         case .setsRequested:
-            return (model: model, effect: .loadSets)
+            return Update(model: model, effect: .loadSets)
         case .setsLoaded(let sets):
             let model = MagicSetsLogicModel(sets: sets, canFetch: model.canFetch)
-            return (model: model, effect: .none)
+            return Update(model: model, effect: .none)
         case .setsRequestFailed:
-            return (model: model, effect: .none)
+            return Update(model: model, effect: .none)
         case .connectionLost:
-            return (model: model, effect: .none)
+            let model = MagicSetsLogicModel(sets: model.sets, canFetch: false)
+            return Update(model: model, effect: .none)
         }
     }
     
@@ -22,8 +23,13 @@ struct MagicSetsLogicController {
         case connectionLost
     }
 
-    enum Effect {
+    enum Effect: Equatable {
         case loadSets
         case none
+    }
+    
+    struct Update: Equatable {
+        let model: MagicSetsLogicModel
+        let effect: Effect
     }
 }

@@ -17,14 +17,14 @@ final class MagicSetsViewModel {
         self.logicController = logicController
     }
     
-    private func handle(update: (model: MagicSetsLogicModel, effect: MagicSetsLogicController.Effect)) {
+    private func handle(update: MagicSetsLogicController.Update) {
         switch update.effect {
         case .loadSets:
             model = update.model
             loadSets()
         case .none:
             model = update.model
-            sets = model.sets
+            sets = model.sets.sorted(by: { $0.name < $1.name })
         }
     }
     

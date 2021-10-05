@@ -39,7 +39,7 @@
             </BuildableReference>
          </TestableReference>
          <TestableReference
-            skipped = "NO">
+            skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "621DA3E02707A076004A04CF"
@@ -52,10 +52,20 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "MagicMockTests"
+               BuildableName = "MagicMockTests"
+               BlueprintName = "MagicMockTests"
+               ReferencedContainer = "container:../MagicMock">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "MagicNetworkTests"
                BuildableName = "MagicNetworkTests"
                BlueprintName = "MagicNetworkTests"
-               ReferencedContainer = "container:../network-layer/MagicNetwork">
+               ReferencedContainer = "container:../MagicNetwork">
             </BuildableReference>
          </TestableReference>
       </Testables>
