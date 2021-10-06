@@ -1,6 +1,6 @@
 import Foundation
 
 struct MagicSetsSection: Hashable {
-    let id: UUID = UUID()
+    let id: Int
     let title: String
 }

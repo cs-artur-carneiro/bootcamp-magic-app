@@ -42,15 +42,21 @@ final class MagicSetsViewModel {
     private func map(sets: [MagicSet]) -> [MagicSetsListViewModel] {
         let initials = Set(sets.compactMap { $0.name.first }).sorted(by: <)
         
+        var ids: Int = -1
         return initials.map { header in
-            var setsCount = 0
+            var setsCount: Int = -1
             let setsForHeader = sets.filter { $0.name.first == header }
             let sets = setsForHeader.map { (set) -> MagicSetsCellViewModel in
                 setsCount += 1
-                return MagicSetsCellViewModel(title: set.name, lastInSection: setsCount == setsForHeader.count)
+                ids += 1
+                return MagicSetsCellViewModel(id: ids,
+                                              title: set.name,
+                                              lastInSection: setsCount == setsForHeader.count - 1)
             }
             
-            let section = MagicSetsSection(title: String(header).uppercased())
+            ids += 1
+            
+            let section = MagicSetsSection(id: ids, title: String(header).uppercased())
             
             return MagicSetsListViewModel(section: section, sets: sets)
         }

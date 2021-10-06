@@ -1,7 +1,7 @@
 import Foundation
 
 struct MagicSetsCellViewModel: Hashable {
-    let id: UUID = UUID()
+    let id: Int
     let title: String
     let lastInSection: Bool
 }
