@@ -79,7 +79,6 @@ extension MagicSetsViewModel: MagicSetsViewModelProtocol {
     }
     
     func setSelected(at index: IndexPath) {
-        print(setsViewModels[index.section].sets[index.row])
     }
     
     var sets: Published<[MagicSetsListViewModel]>.Publisher {
