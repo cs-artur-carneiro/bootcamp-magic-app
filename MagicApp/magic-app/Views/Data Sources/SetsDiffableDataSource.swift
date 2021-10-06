@@ -3,8 +3,8 @@ import UIKit
 
 final class SetsDiffableDataSource: UITableViewDiffableDataSource<MagicSetsSection, MagicSetsCellViewModel> {
     private let setsPublisher: Published<[MagicSetsListViewModel]>.Publisher
-    private var sections: [String] = []
     private var cancellablesStore = Set<AnyCancellable>()
+    private(set) var sections: [String] = []
     
     init(setsPublisher: Published<[MagicSetsListViewModel]>.Publisher,
          for tableView: UITableView,
@@ -28,9 +28,5 @@ final class SetsDiffableDataSource: UITableViewDiffableDataSource<MagicSetsSecti
                 }
                 self?.apply(snapshot)
             }.store(in: &cancellablesStore)
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return sections[section]
     }
 }

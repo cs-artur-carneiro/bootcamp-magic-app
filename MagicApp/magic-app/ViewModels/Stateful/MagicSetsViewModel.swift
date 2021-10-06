@@ -8,7 +8,6 @@ protocol MagicSetsViewModelProtocol: StatefulViewModel {
     func requestSets()
     func setSelected(at index: IndexPath)
     var sets: Published<[MagicSetsListViewModel]>.Publisher { get }
-    
 }
 
 final class MagicSetsViewModel {
@@ -40,12 +39,32 @@ final class MagicSetsViewModel {
     }
     
     private func map(sets: [MagicSet]) -> [MagicSetsListViewModel] {
-        let initials = Set(sets.compactMap { $0.name.first }).sorted(by: <)
+        let initials = Set(sets.compactMap { (sets) -> Character? in
+            guard let char = sets.name.first else { return nil }
+            if char.isLetter {
+                return char
+            } else if char.isNumber {
+                return "#"
+            } else {
+                return nil
+            }
+        }).sorted(by: <)
         
+        return order(sets: sets, basedOn: initials)
+    }
+    
+    private func order(sets: [MagicSet], basedOn initials: [Character]) -> [MagicSetsListViewModel] {
         var ids: Int = -1
         return initials.map { header in
             var setsCount: Int = -1
-            let setsForHeader = sets.filter { $0.name.first == header }
+            let setsForHeader = sets.filter {
+                if header == "#" {
+                    return $0.name.first?.isNumber ?? true
+                } else {
+                    return $0.name.first == header
+                }
+            }.sorted(by: { $0.name < $1.name } )
+            
             let sets = setsForHeader.map { (set) -> MagicSetsCellViewModel in
                 setsCount += 1
                 ids += 1
