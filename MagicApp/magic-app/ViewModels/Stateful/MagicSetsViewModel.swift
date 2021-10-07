@@ -67,8 +67,7 @@ final class MagicSetsViewModel {
             
             let sets = setsForHeader.map { (set) -> MagicSetsCellViewModel in
                 setsCount += 1
-                ids += 1
-                return MagicSetsCellViewModel(id: ids,
+                return MagicSetsCellViewModel(id: setsCount,
                                               title: set.name,
                                               lastInSection: setsCount == setsForHeader.count - 1)
             }

@@ -13,11 +13,11 @@ final class SetsTableViewCell: UITableViewCell {
     }()
     
     private let chevronImageView: UIImageView = {
-        let image = UIImage(systemName: "chevron")
+        let image = UIImage(systemName: "chevron.forward",
+                            withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         let imageView = UIImageView(image: image)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .white
-        imageView.backgroundColor = .blue
         return imageView
     }()
     
@@ -40,6 +40,7 @@ final class SetsTableViewCell: UITableViewCell {
         backgroundColor = .clear
         contentView.backgroundColor = .clear
         textLabel?.textColor = .white
+        textLabel?.font = .systemFont(ofSize: 18, weight: .bold)
         selectionStyle = .none
         
         setUpViewHierarchy()

@@ -54,7 +54,11 @@ final class MagicSetsViewModelTests: XCTestCase {
     }
     
     func test_setsBinding_whenRequest_succeeds() {
-        let expectedFirstResult = MagicSetResponse(sets: Array(repeating: MagicSet(name: "Teste"), count: 2))
+        let viewModelFactory = MagicSetsListViewModelFactory()
+        let expectedFirstResult = MagicSetResponse(sets: [MagicSet(name: "Teste"),
+                                                          MagicSet(name: "Teste"),
+                                                          MagicSet(name: "10th Edition"),
+                                                          MagicSet(name: "2017 Set")])
         
         networkMock
             .setUp()
@@ -63,13 +67,8 @@ final class MagicSetsViewModelTests: XCTestCase {
         
         let expectation = XCTestExpectation(description: #function)
         
-        let firstViewModel = [MagicSetsListViewModel(section: MagicSetsSection(id: 2, title: "T"),
-                                                     sets: [MagicSetsCellViewModel(id: 0,
-                                                                                   title: "Teste",
-                                                                                   lastInSection: false),
-                                                            MagicSetsCellViewModel(id: 1,
-                                                                                   title: "Teste",
-                                                                                   lastInSection: true)])]
+        let firstViewModel = viewModelFactory.makeNumbersAndLetters()
+        
         var viewModelsFromBinding: [[MagicSetsListViewModel]] = []
         
         sut.sets.sink { viewModels in
@@ -81,13 +80,7 @@ final class MagicSetsViewModelTests: XCTestCase {
         
         let expectedSecondResult = MagicSetResponse(sets: Array(repeating: MagicSet(name: "Exemplo"), count: 2))
         
-        let secondViewModel = [MagicSetsListViewModel(section: MagicSetsSection(id: 2, title: "E"),
-                                                      sets: [MagicSetsCellViewModel(id: 0,
-                                                                                    title: "Exemplo",
-                                                                                    lastInSection: false),
-                                                             MagicSetsCellViewModel(id: 1,
-                                                                                    title: "Exemplo",
-                                                                                    lastInSection: true)])]
+        let secondViewModel = viewModelFactory.makeLettersOnly()
         
         networkMock
             .setUp()
