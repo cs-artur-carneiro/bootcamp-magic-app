@@ -121,4 +121,36 @@ final class MagicSetsViewModelTests: XCTestCase {
         
         XCTAssertEqual(setsFromBinding, expectedTimeline)
     }
+    
+    func test_setSelected() {
+        let expectedResult = MagicSetResponse(sets: [MagicSet(name: "Teste"),
+                                                          MagicSet(name: "Teste"),
+                                                          MagicSet(name: "10th Edition"),
+                                                          MagicSet(name: "2017 Set")])
+        
+        networkMock
+            .setUp()
+            .arrange(.result(.success(expectedResult)))
+            .execute()
+        
+        sut.requestSets()
+        
+        let expectation = XCTestExpectation(description: #function)
+        
+        var selectedSetFromBinding: [MagicSetsCellViewModel] = []
+        
+        sut.selectedSet
+            .sink { (set) in
+                selectedSetFromBinding.append(set)
+                expectation.fulfill()
+            }.store(in: &cancellableStore)
+        
+        sut.setSelected(at: IndexPath(row: 0, section: 0))
+        
+        let expectedTimeline = [MagicSetsCellViewModel(id: 0, title: "10th Edition", lastInSection: false)]
+        
+        wait(for: [expectation], timeout: 1.0)
+        
+        XCTAssertEqual(expectedTimeline, selectedSetFromBinding)
+    }
 }

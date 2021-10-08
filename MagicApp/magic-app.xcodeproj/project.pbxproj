@@ -9,23 +9,30 @@
 /* Begin PBXBuildFile section */
 		621DA3C12707A073004A04CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3C02707A073004A04CF /* AppDelegate.swift */; };
 		621DA3C32707A073004A04CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3C22707A073004A04CF /* SceneDelegate.swift */; };
-		621DA3C52707A073004A04CF /* SetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3C42707A073004A04CF /* SetsViewController.swift */; };
+		621DA3C52707A073004A04CF /* MagicSetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3C42707A073004A04CF /* MagicSetsViewController.swift */; };
 		621DA3CB2707A073004A04CF /* magic_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3C92707A073004A04CF /* magic_app.xcdatamodeld */; };
 		621DA3CD2707A075004A04CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621DA3CC2707A075004A04CF /* Assets.xcassets */; };
 		621DA3D02707A075004A04CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 621DA3CE2707A075004A04CF /* LaunchScreen.storyboard */; };
 		621DA3DB2707A076004A04CF /* magic_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3DA2707A076004A04CF /* magic_appTests.swift */; };
 		621DA3E62707A076004A04CF /* magic_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3E52707A076004A04CF /* magic_appUITests.swift */; };
 		6239DB99270CF4A200B77563 /* MagicSetsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629516C8270CAEB200CAB088 /* MagicSetsViewModelTests.swift */; };
-		6239DB9F270DCC7600B77563 /* SetsDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239DB9E270DCC7600B77563 /* SetsDiffableDataSource.swift */; };
+		6239DB9F270DCC7600B77563 /* MagicSetsDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239DB9E270DCC7600B77563 /* MagicSetsDiffableDataSource.swift */; };
+		625F537C27109239007F71B5 /* StatefulViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F537B27109239007F71B5 /* StatefulViewModel.swift */; };
+		625F538227109265007F71B5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F538127109265007F71B5 /* Coordinator.swift */; };
+		625F538A27109282007F71B5 /* MagicSetsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F538927109282007F71B5 /* MagicSetsCoordinator.swift */; };
+		625F539E2710A47E007F71B5 /* MagicSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F539D2710A47E007F71B5 /* MagicSetsView.swift */; };
 		626A1C7B270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A1C7A270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift */; };
-		626A1C84270F34F90093A1BD /* SetsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A1C83270F34F90093A1BD /* SetsSectionHeaderView.swift */; };
+		626A1C84270F34F90093A1BD /* MagicSetsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A1C83270F34F90093A1BD /* MagicSetsSectionHeaderView.swift */; };
+		626A1CA1270F59760093A1BD /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 626A1CA0270F59760093A1BD /* SnapshotTesting */; };
+		626A1CAA270F599C0093A1BD /* SetsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A1CA9270F599C0093A1BD /* SetsViewControllerTests.swift */; };
+		626A1CB5270F7FFD0093A1BD /* MagicSetsViewModelProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A1CB4270F7FFD0093A1BD /* MagicSetsViewModelProtocolMock.swift */; };
 		6292BF17270DCDFC00EF9B2A /* MagicSetsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6292BF16270DCDFC00EF9B2A /* MagicSetsSection.swift */; };
 		6292BF1E270DCE2900EF9B2A /* MagicSetsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6292BF1D270DCE2900EF9B2A /* MagicSetsCellViewModel.swift */; };
 		6292BF27270DCE8100EF9B2A /* MagicSetsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6292BF26270DCE8100EF9B2A /* MagicSetsListViewModel.swift */; };
 		62951699270C9DAD00CAB088 /* MagicMock in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = 62951698270C9DAD00CAB088 /* MagicMock */; };
 		629516C4270C9F8900CAB088 /* MagicNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 629516C3270C9F8900CAB088 /* MagicNetwork */; };
 		629516D3270CAFA100CAB088 /* MagicNetworkProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629516D2270CAFA100CAB088 /* MagicNetworkProtocolMock.swift */; };
-		629516F6270CCB0E00CAB088 /* SetsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629516F5270CCB0E00CAB088 /* SetsTableViewCell.swift */; };
+		629516F6270CCB0E00CAB088 /* MagicSetsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629516F5270CCB0E00CAB088 /* MagicSetsTableViewCell.swift */; };
 		62F1F055270B64B500C6AAC4 /* SetsResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F054270B64B500C6AAC4 /* SetsResource.swift */; };
 		62F1F065270B685A00C6AAC4 /* MagicSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F064270B685A00C6AAC4 /* MagicSetsViewModel.swift */; };
 		62F1F07A270B783A00C6AAC4 /* MagicSetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F079270B783A00C6AAC4 /* MagicSetResponse.swift */; };
@@ -56,7 +63,7 @@
 		621DA3BD2707A073004A04CF /* magic-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "magic-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		621DA3C02707A073004A04CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		621DA3C22707A073004A04CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		621DA3C42707A073004A04CF /* SetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsViewController.swift; sourceTree = "<group>"; };
+		621DA3C42707A073004A04CF /* MagicSetsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewController.swift; sourceTree = "<group>"; };
 		621DA3CA2707A073004A04CF /* magic_app.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = magic_app.xcdatamodel; sourceTree = "<group>"; };
 		621DA3CC2707A075004A04CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		621DA3CF2707A075004A04CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,9 +74,15 @@
 		621DA3E12707A076004A04CF /* magic-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "magic-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		621DA3E52707A076004A04CF /* magic_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magic_appUITests.swift; sourceTree = "<group>"; };
 		621DA3E72707A076004A04CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6239DB9E270DCC7600B77563 /* SetsDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsDiffableDataSource.swift; sourceTree = "<group>"; };
+		6239DB9E270DCC7600B77563 /* MagicSetsDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsDiffableDataSource.swift; sourceTree = "<group>"; };
+		625F537B27109239007F71B5 /* StatefulViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulViewModel.swift; sourceTree = "<group>"; };
+		625F538127109265007F71B5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		625F538927109282007F71B5 /* MagicSetsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsCoordinator.swift; sourceTree = "<group>"; };
+		625F539D2710A47E007F71B5 /* MagicSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsView.swift; sourceTree = "<group>"; };
 		626A1C7A270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsListViewModelFactory.swift; sourceTree = "<group>"; };
-		626A1C83270F34F90093A1BD /* SetsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsSectionHeaderView.swift; sourceTree = "<group>"; };
+		626A1C83270F34F90093A1BD /* MagicSetsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsSectionHeaderView.swift; sourceTree = "<group>"; };
+		626A1CA9270F599C0093A1BD /* SetsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsViewControllerTests.swift; sourceTree = "<group>"; };
+		626A1CB4270F7FFD0093A1BD /* MagicSetsViewModelProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewModelProtocolMock.swift; sourceTree = "<group>"; };
 		6292BF16270DCDFC00EF9B2A /* MagicSetsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsSection.swift; sourceTree = "<group>"; };
 		6292BF1D270DCE2900EF9B2A /* MagicSetsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsCellViewModel.swift; sourceTree = "<group>"; };
 		6292BF26270DCE8100EF9B2A /* MagicSetsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsListViewModel.swift; sourceTree = "<group>"; };
@@ -77,7 +90,7 @@
 		6295169D270C9DB800CAB088 /* MagicNetwork */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MagicNetwork; path = ../MagicNetwork; sourceTree = "<group>"; };
 		629516C8270CAEB200CAB088 /* MagicSetsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewModelTests.swift; sourceTree = "<group>"; };
 		629516D2270CAFA100CAB088 /* MagicNetworkProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicNetworkProtocolMock.swift; sourceTree = "<group>"; };
-		629516F5270CCB0E00CAB088 /* SetsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsTableViewCell.swift; sourceTree = "<group>"; };
+		629516F5270CCB0E00CAB088 /* MagicSetsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsTableViewCell.swift; sourceTree = "<group>"; };
 		62F1F054270B64B500C6AAC4 /* SetsResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsResource.swift; sourceTree = "<group>"; };
 		62F1F064270B685A00C6AAC4 /* MagicSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewModel.swift; sourceTree = "<group>"; };
 		62F1F079270B783A00C6AAC4 /* MagicSetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetResponse.swift; sourceTree = "<group>"; };
@@ -101,6 +114,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62951699270C9DAD00CAB088 /* MagicMock in Frameworks */,
+				626A1CA1270F59760093A1BD /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +157,7 @@
 				629516E6270CC9E100CAB088 /* Supporting Files */,
 				629516F4270CCACC00CAB088 /* Views */,
 				629516EA270CCA1900CAB088 /* ViewControllers */,
+				625F538027109257007F71B5 /* Coordinators */,
 				62F1F085270B822C00C6AAC4 /* LogicControllers */,
 				62F1F077270B782300C6AAC4 /* Models */,
 				62F1F063270B682E00C6AAC4 /* ViewModels */,
@@ -154,6 +169,7 @@
 		621DA3D92707A076004A04CF /* magic-appTests */ = {
 			isa = PBXGroup;
 			children = (
+				626A1CA8270F59890093A1BD /* ViewControllers */,
 				626A1C78270F1F880093A1BD /* Helpers */,
 				629516D0270CAEFB00CAB088 /* Doubles */,
 				62F1F0AD270C8F7A00C6AAC4 /* ViewModels */,
@@ -177,9 +193,18 @@
 			isa = PBXGroup;
 			children = (
 				6292BF15270DCDEE00EF9B2A /* Sections */,
-				6239DB9E270DCC7600B77563 /* SetsDiffableDataSource.swift */,
+				6239DB9E270DCC7600B77563 /* MagicSetsDiffableDataSource.swift */,
 			);
 			path = "Data Sources";
+			sourceTree = "<group>";
+		};
+		625F538027109257007F71B5 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				625F538127109265007F71B5 /* Coordinator.swift */,
+				625F538927109282007F71B5 /* MagicSetsCoordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		626A1C78270F1F880093A1BD /* Helpers */ = {
@@ -201,9 +226,17 @@
 		626A1C82270F34E70093A1BD /* Headers */ = {
 			isa = PBXGroup;
 			children = (
-				626A1C83270F34F90093A1BD /* SetsSectionHeaderView.swift */,
+				626A1C83270F34F90093A1BD /* MagicSetsSectionHeaderView.swift */,
 			);
 			path = Headers;
+			sourceTree = "<group>";
+		};
+		626A1CA8270F59890093A1BD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				626A1CA9270F599C0093A1BD /* SetsViewControllerTests.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		6292BF15270DCDEE00EF9B2A /* Sections */ = {
@@ -218,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				62F1F064270B685A00C6AAC4 /* MagicSetsViewModel.swift */,
+				625F537B27109239007F71B5 /* StatefulViewModel.swift */,
 			);
 			path = Stateful;
 			sourceTree = "<group>";
@@ -252,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				629516D2270CAFA100CAB088 /* MagicNetworkProtocolMock.swift */,
+				626A1CB4270F7FFD0093A1BD /* MagicSetsViewModelProtocolMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -286,7 +321,7 @@
 		629516EA270CCA1900CAB088 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				621DA3C42707A073004A04CF /* SetsViewController.swift */,
+				621DA3C42707A073004A04CF /* MagicSetsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -297,6 +332,7 @@
 				626A1C82270F34E70093A1BD /* Headers */,
 				6239DBA3270DCCB700B77563 /* Data Sources */,
 				629516FD270CDE4000CAB088 /* Cells */,
+				625F539D2710A47E007F71B5 /* MagicSetsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -304,7 +340,7 @@
 		629516FD270CDE4000CAB088 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				629516F5270CCB0E00CAB088 /* SetsTableViewCell.swift */,
+				629516F5270CCB0E00CAB088 /* MagicSetsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -423,6 +459,7 @@
 			name = "magic-appTests";
 			packageProductDependencies = (
 				62951698270C9DAD00CAB088 /* MagicMock */,
+				626A1CA0270F59760093A1BD /* SnapshotTesting */,
 			);
 			productName = "magic-appTests";
 			productReference = 621DA3D62707A076004A04CF /* magic-appTests.xctest */;
@@ -477,6 +514,9 @@
 				Base,
 			);
 			mainGroup = 621DA3B42707A073004A04CF;
+			packageReferences = (
+				626A1C9F270F59760093A1BD /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			productRefGroup = 621DA3BE2707A073004A04CF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -520,20 +560,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				6292BF27270DCE8100EF9B2A /* MagicSetsListViewModel.swift in Sources */,
-				621DA3C52707A073004A04CF /* SetsViewController.swift in Sources */,
+				625F537C27109239007F71B5 /* StatefulViewModel.swift in Sources */,
+				625F539E2710A47E007F71B5 /* MagicSetsView.swift in Sources */,
+				621DA3C52707A073004A04CF /* MagicSetsViewController.swift in Sources */,
 				621DA3C12707A073004A04CF /* AppDelegate.swift in Sources */,
-				6239DB9F270DCC7600B77563 /* SetsDiffableDataSource.swift in Sources */,
+				6239DB9F270DCC7600B77563 /* MagicSetsDiffableDataSource.swift in Sources */,
 				62F1F055270B64B500C6AAC4 /* SetsResource.swift in Sources */,
+				625F538A27109282007F71B5 /* MagicSetsCoordinator.swift in Sources */,
 				62F1F098270B981100C6AAC4 /* MagicSetsLogicModel.swift in Sources */,
 				62F1F087270B824200C6AAC4 /* MagicSetsLogicController.swift in Sources */,
-				629516F6270CCB0E00CAB088 /* SetsTableViewCell.swift in Sources */,
+				625F538227109265007F71B5 /* Coordinator.swift in Sources */,
+				629516F6270CCB0E00CAB088 /* MagicSetsTableViewCell.swift in Sources */,
 				621DA3C32707A073004A04CF /* SceneDelegate.swift in Sources */,
 				621DA3CB2707A073004A04CF /* magic_app.xcdatamodeld in Sources */,
 				6292BF1E270DCE2900EF9B2A /* MagicSetsCellViewModel.swift in Sources */,
 				62F1F07A270B783A00C6AAC4 /* MagicSetResponse.swift in Sources */,
 				6292BF17270DCDFC00EF9B2A /* MagicSetsSection.swift in Sources */,
 				62F1F0A0270B982A00C6AAC4 /* MagicSet.swift in Sources */,
-				626A1C84270F34F90093A1BD /* SetsSectionHeaderView.swift in Sources */,
+				626A1C84270F34F90093A1BD /* MagicSetsSectionHeaderView.swift in Sources */,
 				62F1F065270B685A00C6AAC4 /* MagicSetsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -543,6 +587,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				621DA3DB2707A076004A04CF /* magic_appTests.swift in Sources */,
+				626A1CAA270F599C0093A1BD /* SetsViewControllerTests.swift in Sources */,
+				626A1CB5270F7FFD0093A1BD /* MagicSetsViewModelProtocolMock.swift in Sources */,
 				626A1C7B270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift in Sources */,
 				62F1F0A6270C81EC00C6AAC4 /* MagicSetsLogicControllerTests.swift in Sources */,
 				629516D3270CAFA100CAB088 /* MagicNetworkProtocolMock.swift in Sources */,
@@ -860,7 +906,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		626A1C9F270F59760093A1BD /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		626A1CA0270F59760093A1BD /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 626A1C9F270F59760093A1BD /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
 		62951698270C9DAD00CAB088 /* MagicMock */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = MagicMock;

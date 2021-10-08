@@ -1,6 +1,6 @@
 import UIKit
 
-final class SetsTableViewCell: UITableViewCell {
+final class MagicSetsTableViewCell: UITableViewCell {
     static var identifier: String {
         return String(describing: self)
     }

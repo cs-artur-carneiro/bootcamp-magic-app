@@ -1,7 +1,7 @@
 import Combine
 import UIKit
 
-final class SetsDiffableDataSource: UITableViewDiffableDataSource<MagicSetsSection, MagicSetsCellViewModel> {
+final class MagicSetsDiffableDataSource: UITableViewDiffableDataSource<MagicSetsSection, MagicSetsCellViewModel> {
     private let setsPublisher: Published<[MagicSetsListViewModel]>.Publisher
     private var cancellablesStore = Set<AnyCancellable>()
     private(set) var sections: [String] = []

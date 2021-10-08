@@ -1,6 +1,6 @@
 import UIKit
 
-final class SetsSectionHeaderView: UITableViewHeaderFooterView {
+final class MagicSetsSectionHeaderView: UITableViewHeaderFooterView {
     static var identifier: String {
         return String(describing: self)
     }

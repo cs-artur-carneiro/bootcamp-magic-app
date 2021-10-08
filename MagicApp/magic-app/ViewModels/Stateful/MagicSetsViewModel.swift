@@ -2,19 +2,19 @@ import Foundation
 import MagicNetwork
 import Combine
 
-protocol StatefulViewModel: AnyObject {}
-
 protocol MagicSetsViewModelProtocol: StatefulViewModel {
     func requestSets()
     func setSelected(at index: IndexPath)
     var sets: Published<[MagicSetsListViewModel]>.Publisher { get }
+    var selectedSet: Publishers.ReceiveOn<PassthroughSubject<MagicSetsCellViewModel, Never>, RunLoop> { get }
 }
 
 final class MagicSetsViewModel {
     private let network: MagicNetworkProtocol
     private let logicController: MagicSetsLogicController
     private var model: MagicSetsLogicModel = MagicSetsLogicModel(sets: [], canFetch: true)
-    @Published private var setsViewModels: [MagicSetsListViewModel] = []
+    @Published private var setsViewModelsPublisher: [MagicSetsListViewModel] = []
+    private var selectedSetSubject = PassthroughSubject<MagicSetsCellViewModel, Never>()
     
     init(network: MagicNetworkProtocol = MagicNetwork(),
          logicController: MagicSetsLogicController = MagicSetsLogicController()) {
@@ -29,7 +29,7 @@ final class MagicSetsViewModel {
             loadSets()
         case .none:
             model = update.model
-            setsViewModels = map(sets: model.sets)
+            setsViewModelsPublisher = map(sets: model.sets)
         }
     }
     
@@ -103,9 +103,15 @@ extension MagicSetsViewModel: MagicSetsViewModelProtocol {
     }
     
     func setSelected(at index: IndexPath) {
+        selectedSetSubject.send(setsViewModelsPublisher[index.section].sets[index.row])
     }
     
     var sets: Published<[MagicSetsListViewModel]>.Publisher {
-        return $setsViewModels
+        return $setsViewModelsPublisher
+    }
+    
+    var selectedSet: Publishers.ReceiveOn<PassthroughSubject<MagicSetsCellViewModel, Never>, RunLoop> {
+        return selectedSetSubject
+            .receive(on: RunLoop.main)
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var coordinator: Coordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -21,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.tabBar.barTintColor = .clear
         tabBarController.tabBar.backgroundImage = UIImage()
         tabBarController.tabBar.shadowImage = UIImage()
-        let viewController = UINavigationController(rootViewController: SetsViewController())
+        let viewController = UINavigationController()
         viewController.navigationBar.prefersLargeTitles = true
         viewController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         viewController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -29,6 +30,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarController.selectedIndex = 0
         window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
+        
+        coordinator = MagicSetsCoordinator(navigationController: viewController)
+        coordinator?.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
