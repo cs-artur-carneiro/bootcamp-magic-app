@@ -13,7 +13,6 @@
 		621DA3CB2707A073004A04CF /* magic_app.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3C92707A073004A04CF /* magic_app.xcdatamodeld */; };
 		621DA3CD2707A075004A04CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 621DA3CC2707A075004A04CF /* Assets.xcassets */; };
 		621DA3D02707A075004A04CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 621DA3CE2707A075004A04CF /* LaunchScreen.storyboard */; };
-		621DA3DB2707A076004A04CF /* magic_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3DA2707A076004A04CF /* magic_appTests.swift */; };
 		621DA3E62707A076004A04CF /* magic_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621DA3E52707A076004A04CF /* magic_appUITests.swift */; };
 		6239DB99270CF4A200B77563 /* MagicSetsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629516C8270CAEB200CAB088 /* MagicSetsViewModelTests.swift */; };
 		6239DB9F270DCC7600B77563 /* MagicSetsDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6239DB9E270DCC7600B77563 /* MagicSetsDiffableDataSource.swift */; };
@@ -21,10 +20,12 @@
 		625F538227109265007F71B5 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F538127109265007F71B5 /* Coordinator.swift */; };
 		625F538A27109282007F71B5 /* MagicSetsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F538927109282007F71B5 /* MagicSetsCoordinator.swift */; };
 		625F539E2710A47E007F71B5 /* MagicSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F539D2710A47E007F71B5 /* MagicSetsView.swift */; };
+		625F53AD2714668B007F71B5 /* MagicSetsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F53AC2714668B007F71B5 /* MagicSetsViewTests.swift */; };
+		625F53B6271469FF007F71B5 /* MagicSetsViewControllerDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F53B5271469FF007F71B5 /* MagicSetsViewControllerDelegateStub.swift */; };
 		626A1C7B270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A1C7A270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift */; };
 		626A1C84270F34F90093A1BD /* MagicSetsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A1C83270F34F90093A1BD /* MagicSetsSectionHeaderView.swift */; };
 		626A1CA1270F59760093A1BD /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 626A1CA0270F59760093A1BD /* SnapshotTesting */; };
-		626A1CAA270F599C0093A1BD /* SetsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A1CA9270F599C0093A1BD /* SetsViewControllerTests.swift */; };
+		626A1CAA270F599C0093A1BD /* MagicSetsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A1CA9270F599C0093A1BD /* MagicSetsViewControllerTests.swift */; };
 		626A1CB5270F7FFD0093A1BD /* MagicSetsViewModelProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A1CB4270F7FFD0093A1BD /* MagicSetsViewModelProtocolMock.swift */; };
 		6292BF17270DCDFC00EF9B2A /* MagicSetsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6292BF16270DCDFC00EF9B2A /* MagicSetsSection.swift */; };
 		6292BF1E270DCE2900EF9B2A /* MagicSetsCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6292BF1D270DCE2900EF9B2A /* MagicSetsCellViewModel.swift */; };
@@ -69,7 +70,6 @@
 		621DA3CF2707A075004A04CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		621DA3D12707A075004A04CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		621DA3D62707A076004A04CF /* magic-appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "magic-appTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		621DA3DA2707A076004A04CF /* magic_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magic_appTests.swift; sourceTree = "<group>"; };
 		621DA3DC2707A076004A04CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		621DA3E12707A076004A04CF /* magic-appUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "magic-appUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		621DA3E52707A076004A04CF /* magic_appUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = magic_appUITests.swift; sourceTree = "<group>"; };
@@ -79,9 +79,11 @@
 		625F538127109265007F71B5 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		625F538927109282007F71B5 /* MagicSetsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsCoordinator.swift; sourceTree = "<group>"; };
 		625F539D2710A47E007F71B5 /* MagicSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsView.swift; sourceTree = "<group>"; };
+		625F53AC2714668B007F71B5 /* MagicSetsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewTests.swift; sourceTree = "<group>"; };
+		625F53B5271469FF007F71B5 /* MagicSetsViewControllerDelegateStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewControllerDelegateStub.swift; sourceTree = "<group>"; };
 		626A1C7A270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsListViewModelFactory.swift; sourceTree = "<group>"; };
 		626A1C83270F34F90093A1BD /* MagicSetsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsSectionHeaderView.swift; sourceTree = "<group>"; };
-		626A1CA9270F599C0093A1BD /* SetsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsViewControllerTests.swift; sourceTree = "<group>"; };
+		626A1CA9270F599C0093A1BD /* MagicSetsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewControllerTests.swift; sourceTree = "<group>"; };
 		626A1CB4270F7FFD0093A1BD /* MagicSetsViewModelProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewModelProtocolMock.swift; sourceTree = "<group>"; };
 		6292BF16270DCDFC00EF9B2A /* MagicSetsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsSection.swift; sourceTree = "<group>"; };
 		6292BF1D270DCE2900EF9B2A /* MagicSetsCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsCellViewModel.swift; sourceTree = "<group>"; };
@@ -169,12 +171,12 @@
 		621DA3D92707A076004A04CF /* magic-appTests */ = {
 			isa = PBXGroup;
 			children = (
+				625F53AB27146680007F71B5 /* Views */,
 				626A1CA8270F59890093A1BD /* ViewControllers */,
 				626A1C78270F1F880093A1BD /* Helpers */,
 				629516D0270CAEFB00CAB088 /* Doubles */,
 				62F1F0AD270C8F7A00C6AAC4 /* ViewModels */,
 				62F1F0A4270C81D800C6AAC4 /* LogicControllers */,
-				621DA3DA2707A076004A04CF /* magic_appTests.swift */,
 				621DA3DC2707A076004A04CF /* Info.plist */,
 			);
 			path = "magic-appTests";
@@ -207,6 +209,22 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
+		625F53AB27146680007F71B5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				625F53AC2714668B007F71B5 /* MagicSetsViewTests.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		625F53B4271469EC007F71B5 /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				625F53B5271469FF007F71B5 /* MagicSetsViewControllerDelegateStub.swift */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
 		626A1C78270F1F880093A1BD /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,7 +252,7 @@
 		626A1CA8270F59890093A1BD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				626A1CA9270F599C0093A1BD /* SetsViewControllerTests.swift */,
+				626A1CA9270F599C0093A1BD /* MagicSetsViewControllerTests.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -277,6 +295,7 @@
 		629516D0270CAEFB00CAB088 /* Doubles */ = {
 			isa = PBXGroup;
 			children = (
+				625F53B4271469EC007F71B5 /* Stubs */,
 				629516D1270CAF0A00CAB088 /* Mocks */,
 			);
 			path = Doubles;
@@ -586,10 +605,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				621DA3DB2707A076004A04CF /* magic_appTests.swift in Sources */,
-				626A1CAA270F599C0093A1BD /* SetsViewControllerTests.swift in Sources */,
+				626A1CAA270F599C0093A1BD /* MagicSetsViewControllerTests.swift in Sources */,
 				626A1CB5270F7FFD0093A1BD /* MagicSetsViewModelProtocolMock.swift in Sources */,
+				625F53AD2714668B007F71B5 /* MagicSetsViewTests.swift in Sources */,
 				626A1C7B270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift in Sources */,
+				625F53B6271469FF007F71B5 /* MagicSetsViewControllerDelegateStub.swift in Sources */,
 				62F1F0A6270C81EC00C6AAC4 /* MagicSetsLogicControllerTests.swift in Sources */,
 				629516D3270CAFA100CAB088 /* MagicNetworkProtocolMock.swift in Sources */,
 				6239DB99270CF4A200B77563 /* MagicSetsViewModelTests.swift in Sources */,

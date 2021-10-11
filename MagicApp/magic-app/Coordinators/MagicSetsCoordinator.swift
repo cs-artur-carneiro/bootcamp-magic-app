@@ -9,7 +9,7 @@ final class MagicSetsCoordinator: Coordinator {
     
     func start() {
         let viewModel = MagicSetsViewModel()
-        let setsView = MagicSetsView(setsPublisher: viewModel.sets)
+        let setsView = MagicSetsView()
         let controller = MagicSetsViewController(setsView: setsView,
                                                  viewModel: viewModel)
         controller.delegate = self

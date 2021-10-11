@@ -49,9 +49,8 @@ extension MagicSetsViewModelProtocolMock: MagicSetsViewModelProtocol {
         return $setsViewModels
     }
     
-    var selectedSet: Publishers.ReceiveOn<PassthroughSubject<MagicSetsCellViewModel, Never>, RunLoop> {
+    var selectedSet: PassthroughSubject<MagicSetsCellViewModel, Never> {
         return selectedSetPublisher
-            .receive(on: RunLoop.main)
     }
 }
 
@@ -64,8 +63,11 @@ enum MagicSetsViewModelProtocolMockAction: Equatable {
         case (.requestSets, .setSelected),
              (.setSelected, .requestSets):
             return false
-        default:
-            return lhs == rhs
+        case (.requestSets, .requestSets):
+            return true
+        case (.setSelected(let lhsIndex),
+              .setSelected(let rhsIndex)):
+            return lhsIndex == rhsIndex
         }
     }
 }

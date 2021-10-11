@@ -3,6 +3,8 @@ import Foundation
 struct MagicSetsLogicController {
     func update(_ model: MagicSetsLogicModel, _ event: Event) -> Update {
         switch event {
+        case .setSelected(let index):
+            return Update(model: model, effect: .loadSet(at: index))
         case .setsRequested:
             return Update(model: model, effect: .loadSets)
         case .setsLoaded(let sets):
@@ -17,6 +19,7 @@ struct MagicSetsLogicController {
     }
     
     enum Event {
+        case setSelected(IndexPath)
         case setsRequested
         case setsLoaded([MagicSet])
         case setsRequestFailed
@@ -24,6 +27,7 @@ struct MagicSetsLogicController {
     }
 
     enum Effect: Equatable {
+        case loadSet(at: IndexPath)
         case loadSets
         case none
     }

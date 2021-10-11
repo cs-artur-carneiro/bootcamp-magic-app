@@ -42,9 +42,12 @@ final class MagicSetsViewController: UIViewController {
         }
         
         viewModel.selectedSet
+            .receive(on: RunLoop.main)
             .sink { [weak self] (set) in
                 self?.delegate?.didSelectSet(set)
             }.store(in: &cancellableStore)
+        
+        setsView.configureSetsDataSource(for: viewModel.sets)
     }
 }
 

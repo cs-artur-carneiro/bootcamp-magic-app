@@ -2,6 +2,7 @@ import UIKit
 
 protocol MagicSetsViewProtocol: UIView {
     var didSelectSetAt: ((IndexPath) -> Void)? { get set }
+    func configureSetsDataSource(for publisher: Published<[MagicSetsListViewModel]>.Publisher)
 }
 
 final class MagicSetsView: UIView, MagicSetsViewProtocol {
@@ -21,20 +22,10 @@ final class MagicSetsView: UIView, MagicSetsViewProtocol {
         return tableView
     }()
     
-    private let setsPublisher: Published<[MagicSetsListViewModel]>.Publisher
+    private var setsDataSource: MagicSetsDiffableDataSource?
     
-    private lazy var setsDataSource = MagicSetsDiffableDataSource(setsPublisher: setsPublisher, for: setsTableView) { (tableView, index, viewModel) -> UITableViewCell? in
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: MagicSetsTableViewCell.identifier, for: index) as? MagicSetsTableViewCell else {
-            return nil
-        }
-        
-        cell.set(viewModel: viewModel)
-        return cell
-    }
-    
-    init(setsPublisher: Published<[MagicSetsListViewModel]>.Publisher) {
-        self.setsPublisher = setsPublisher
-        super.init(frame: .zero)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setUp()
     }
     
@@ -46,8 +37,6 @@ final class MagicSetsView: UIView, MagicSetsViewProtocol {
     private func setUp() {
         setUpViewHierarchy()
         layoutConstraints()
-        
-        setsTableView.dataSource = setsDataSource
         setsTableView.delegate = self
     }
     
@@ -66,6 +55,19 @@ final class MagicSetsView: UIView, MagicSetsViewProtocol {
     
     // MARK: - API
     var didSelectSetAt: ((IndexPath) -> Void)?
+    
+    func configureSetsDataSource(for publisher: Published<[MagicSetsListViewModel]>.Publisher) {
+        setsDataSource = MagicSetsDiffableDataSource(setsPublisher: publisher, for: setsTableView) { (tableView, index, viewModel) -> UITableViewCell? in
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: MagicSetsTableViewCell.identifier, for: index) as? MagicSetsTableViewCell else {
+                return nil
+            }
+            
+            cell.set(viewModel: viewModel)
+            return cell
+        }
+        
+        setsTableView.dataSource = setsDataSource
+    }
 }
 
 extension MagicSetsView: UITableViewDelegate {
@@ -78,12 +80,13 @@ extension MagicSetsView: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let header = tableView
+        guard let dataSource = setsDataSource,
+              let header = tableView
                 .dequeueReusableHeaderFooterView(withIdentifier: MagicSetsSectionHeaderView.identifier) as? MagicSetsSectionHeaderView else {
             return nil
         }
         
-        header.index = setsDataSource.sections[section]
+        header.index = dataSource.sections[section]
         
         return header
     }

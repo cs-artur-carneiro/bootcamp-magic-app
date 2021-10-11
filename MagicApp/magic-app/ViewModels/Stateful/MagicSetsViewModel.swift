@@ -6,7 +6,7 @@ protocol MagicSetsViewModelProtocol: StatefulViewModel {
     func requestSets()
     func setSelected(at index: IndexPath)
     var sets: Published<[MagicSetsListViewModel]>.Publisher { get }
-    var selectedSet: Publishers.ReceiveOn<PassthroughSubject<MagicSetsCellViewModel, Never>, RunLoop> { get }
+    var selectedSet: PassthroughSubject<MagicSetsCellViewModel, Never> { get }
 }
 
 final class MagicSetsViewModel {
@@ -24,6 +24,9 @@ final class MagicSetsViewModel {
     
     private func handle(update: MagicSetsLogicController.Update) {
         switch update.effect {
+        case .loadSet(at: let index):
+            model = update.model
+            selectedSetSubject.send(setsViewModelsPublisher[index.section].sets[index.row])
         case .loadSets:
             model = update.model
             loadSets()
@@ -54,12 +57,13 @@ final class MagicSetsViewModel {
     }
     
     private func order(sets: [MagicSet], basedOn initials: [Character]) -> [MagicSetsListViewModel] {
-        var ids: Int = -1
+        var sectionIds: Int = -1
         return initials.map { header in
             var setsCount: Int = -1
             let setsForHeader = sets.filter {
                 if header == "#" {
-                    return $0.name.first?.isNumber ?? true
+                    guard let firstCharacter = $0.name.first else { return false }
+                    return firstCharacter.isNumber || !firstCharacter.isLetter
                 } else {
                     return $0.name.first == header
                 }
@@ -72,9 +76,9 @@ final class MagicSetsViewModel {
                                               lastInSection: setsCount == setsForHeader.count - 1)
             }
             
-            ids += 1
+            sectionIds += 1
             
-            let section = MagicSetsSection(id: ids, title: String(header).uppercased())
+            let section = MagicSetsSection(id: sectionIds, title: String(header).uppercased())
             
             return MagicSetsListViewModel(section: section, sets: sets)
         }
@@ -98,20 +102,18 @@ final class MagicSetsViewModel {
 
 extension MagicSetsViewModel: MagicSetsViewModelProtocol {
     func requestSets() {
-        let update = logicController.update(model, .setsRequested)
-        handle(update: update)
+        handle(event: .setsRequested)
     }
     
     func setSelected(at index: IndexPath) {
-        selectedSetSubject.send(setsViewModelsPublisher[index.section].sets[index.row])
+        handle(event: .setSelected(index))
     }
     
     var sets: Published<[MagicSetsListViewModel]>.Publisher {
         return $setsViewModelsPublisher
     }
     
-    var selectedSet: Publishers.ReceiveOn<PassthroughSubject<MagicSetsCellViewModel, Never>, RunLoop> {
+    var selectedSet: PassthroughSubject<MagicSetsCellViewModel, Never> {
         return selectedSetSubject
-            .receive(on: RunLoop.main)
     }
 }
