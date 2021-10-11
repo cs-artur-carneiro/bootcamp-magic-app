@@ -11,7 +11,16 @@ final class TestingMock: MagicMock {
     var actions: [TestingMockAction] = []
     
     func setUp() -> ArrangementProxy<TestingMockArrangement> {
-        let proxy = ArrangementProxy<TestingMockArrangement>([]) { _ in }
+        let proxy = ArrangementProxy<TestingMockArrangement>([]) { arrangements in
+            arrangements.forEach {
+                switch $0 {
+                case .addition(let addition):
+                    self.addition = addition
+                case .thought(let thought):
+                    self.thought = thought
+                }
+            }
+        }
         
         return proxy
     }
@@ -20,6 +29,25 @@ final class TestingMock: MagicMock {
         addition = nil
         thought = nil
     }
+    
+    func add(_ number: Int) {
+        actions.append(.add(number))
+        if let addition = addition {
+            self.addition = addition + number
+        }
+    }
+    
+    func think(_ thought: String) {
+        actions.append(.think(thought))
+        if let currentThought = self.thought {
+            self.thought = "\(currentThought)-\(thought)"
+        }
+    }
+    
+    func state() -> (Int?, String?) {
+        return (addition, thought)
+    }
+    
 }
 
 enum TestingMockAction: Equatable {
