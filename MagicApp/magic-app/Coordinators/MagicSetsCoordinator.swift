@@ -19,6 +19,5 @@ final class MagicSetsCoordinator: Coordinator {
 
 extension MagicSetsCoordinator: MagicSetsViewControllerDelegate {
     func didSelectSet(_ set: MagicSetsCellViewModel) {
-        navigationController.pushViewController(UIViewController(), animated: true)
     }
 }
