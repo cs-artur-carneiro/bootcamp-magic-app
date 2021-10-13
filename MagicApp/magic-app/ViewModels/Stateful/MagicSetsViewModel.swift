@@ -57,30 +57,34 @@ final class MagicSetsViewModel {
     }
     
     private func order(sets: [MagicSet], basedOn initials: [Character]) -> [MagicSetsListViewModel] {
-        var sectionIds: Int = -1
+        var sectionId: Int = -1
         return initials.map { header in
-            var setsCount: Int = -1
-            let setsForHeader = sets.filter {
-                if header == "#" {
-                    guard let firstCharacter = $0.name.first else { return false }
-                    return firstCharacter.isNumber || !firstCharacter.isLetter
-                } else {
-                    return $0.name.first == header
-                }
-            }.sorted(by: { $0.name < $1.name } )
+            var setId: Int = -1
+            // TODO: Strong ou Weak?
+            let setsForHeader = self.filter(sets: sets, forHeader: header).sorted(by: { $0.name < $1.name } )
             
             let sets = setsForHeader.map { (set) -> MagicSetsCellViewModel in
-                setsCount += 1
-                return MagicSetsCellViewModel(id: setsCount,
-                                              title: set.name,
-                                              lastInSection: setsCount == setsForHeader.count - 1)
+                setId += 1
+                let lastInSection = setId == setsForHeader.count - 1
+                return MagicSetsCellViewModel(id: setId, title: set.name, lastInSection: lastInSection)
             }
             
-            sectionIds += 1
+            sectionId += 1
             
-            let section = MagicSetsSection(id: sectionIds, title: String(header).uppercased())
+            let section = MagicSetsSection(id: sectionId, title: String(header).uppercased())
             
             return MagicSetsListViewModel(section: section, sets: sets)
+        }
+    }
+    
+    private func filter(sets: [MagicSet], forHeader header: Character) -> [MagicSet] {
+        return sets.filter {
+            if header == "#" {
+                guard let firstCharacter = $0.name.first else { return false }
+                return firstCharacter.isNumber || !firstCharacter.isLetter
+            } else {
+                return $0.name.first == header
+            }
         }
     }
     
@@ -91,7 +95,7 @@ final class MagicSetsViewModel {
                 if let sets = sets {
                     self?.handle(event: .setsLoaded(sets.sets))
                 } else {
-                    // TODO: Pensar em um evento para quando não retornar sets
+                    self?.handle(event: .setsLoaded([]))
                 }
             case .failure:
                 self?.handle(event: .setsRequestFailed)

@@ -26,7 +26,32 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "621DA3BC2707A073004A04CF"
+            BuildableName = "magic-app.app"
+            BlueprintName = "magic-app"
+            ReferencedContainer = "container:magic-app.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "MagicNetwork"
+            BuildableName = "MagicNetwork"
+            BlueprintName = "MagicNetwork"
+            ReferencedContainer = "container:../MagicNetwork">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "MagicMock"
+            BuildableName = "MagicMock"
+            BlueprintName = "MagicMock"
+            ReferencedContainer = "container:../MagicMock">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">

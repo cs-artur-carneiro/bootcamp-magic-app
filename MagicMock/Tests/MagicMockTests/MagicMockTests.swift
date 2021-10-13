@@ -16,10 +16,10 @@ final class MagicMockTests: XCTestCase {
         sut
             .setUp()
             .arrange(.addition(32))
-            .arrange(.thought("Olá"))
+            .arrange(.thought("Pensamento"))
             .execute()
         
-        let expectedState = (32, "Olá")
+        let expectedState = (32, "Pensamento")
         let currentState = sut.state()
         
         XCTAssertEqual(currentState.0, expectedState.0)
@@ -30,7 +30,7 @@ final class MagicMockTests: XCTestCase {
         sut
             .setUp()
             .arrange(.addition(32))
-            .arrange(.thought("Olá"))
+            .arrange(.thought("Pensamento"))
         
         let expectedState: (Int?, String?) = (nil, nil)
         let currentState = sut.state()
@@ -43,7 +43,7 @@ final class MagicMockTests: XCTestCase {
         sut
             .setUp()
             .arrange(.addition(32))
-            .arrange(.thought("Olá"))
+            .arrange(.thought("Pensamento"))
             .execute()
         
         let expectedState: (Int?, String?) = (nil, nil)
@@ -59,14 +59,14 @@ final class MagicMockTests: XCTestCase {
         sut
             .setUp()
             .arrange(.addition(32))
-            .arrange(.thought("Olá"))
+            .arrange(.thought("Pensamento"))
             .execute()
         
         sut.add(4)
-        sut.think("Como vai você?")
+        sut.think("Pensei")
         
         let expectedActions: [TestingMockAction] = [.add(4),
-                                                    .think("Como vai você?")]
+                                                    .think("Pensei")]
         
         XCTAssertEqual(expectedActions, sut.actions)
         XCTAssertTrue(sut.assert(expectedActions))
@@ -76,11 +76,11 @@ final class MagicMockTests: XCTestCase {
         sut
             .setUp()
             .arrange(.addition(32))
-            .arrange(.thought("Olá"))
+            .arrange(.thought("Pensamento"))
             .execute()
         
         sut.add(4)
-        sut.think("Como vai você?")
+        sut.think("Pensei")
         
         sut.clearActions()
         

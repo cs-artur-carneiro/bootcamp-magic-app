@@ -2,11 +2,11 @@ import Combine
 import UIKit
 
 final class MagicSetsDiffableDataSource: UITableViewDiffableDataSource<MagicSetsSection, MagicSetsCellViewModel> {
-    private let setsPublisher: Published<[MagicSetsListViewModel]>.Publisher
+    private let setsPublisher: Publishers.Share<Published<[MagicSetsListViewModel]>.Publisher>
     private var cancellablesStore = Set<AnyCancellable>()
     private(set) var sections: [String] = []
     
-    init(setsPublisher: Published<[MagicSetsListViewModel]>.Publisher,
+    init(setsPublisher: Publishers.Share<Published<[MagicSetsListViewModel]>.Publisher>,
          for tableView: UITableView,
          cellProvider: @escaping UITableViewDiffableDataSource<MagicSetsSection, MagicSetsCellViewModel>.CellProvider) {
         self.setsPublisher = setsPublisher

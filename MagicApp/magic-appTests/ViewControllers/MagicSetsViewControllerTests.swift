@@ -68,7 +68,7 @@ final class MagicSetsViewControllerTests: XCTestCase {
         
         viewModel.setSelected(at: index)
         
-        delegateStub.didSelectCallBack = {
+        delegateStub.didSelectCallback = {
             expectation.fulfill()
         }
         

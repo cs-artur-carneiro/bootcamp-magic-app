@@ -31,6 +31,9 @@ final class MagicSetsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Expansions"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
+        
         setUpBindings()
         
         viewModel.requestSets()
@@ -39,6 +42,10 @@ final class MagicSetsViewController: UIViewController {
     private func setUpBindings() {
         setsView.didSelectSetAt = { [weak self] index in
             self?.viewModel.setSelected(at: index)
+        }
+        
+        setsView.didPullToRefresh = { [weak self] in
+            self?.viewModel.requestSets()
         }
         
         viewModel.selectedSet

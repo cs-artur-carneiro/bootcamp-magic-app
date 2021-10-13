@@ -1,7 +1,9 @@
 import UIKit
+import Combine
 
 protocol MagicSetsViewProtocol: UIView {
     var didSelectSetAt: ((IndexPath) -> Void)? { get set }
+    var didPullToRefresh: (() -> Void)? { get set }
     func configureSetsDataSource(for publisher: Published<[MagicSetsListViewModel]>.Publisher)
 }
 
@@ -23,6 +25,7 @@ final class MagicSetsView: UIView, MagicSetsViewProtocol {
     }()
     
     private var setsDataSource: MagicSetsDiffableDataSource?
+    private var cancellableStore =  Set<AnyCancellable>()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,7 +40,17 @@ final class MagicSetsView: UIView, MagicSetsViewProtocol {
     private func setUp() {
         setUpViewHierarchy()
         layoutConstraints()
+        
         setsTableView.delegate = self
+        
+        setsTableView.refreshControl = UIRefreshControl()
+        setsTableView.refreshControl?.addTarget(self, action: #selector(didRefresh), for: .valueChanged)
+        setsTableView.refreshControl?.tintColor = .white
+    }
+    
+    @objc
+    private func didRefresh() {
+        didPullToRefresh?()
     }
     
     private func setUpViewHierarchy() {
@@ -56,8 +69,18 @@ final class MagicSetsView: UIView, MagicSetsViewProtocol {
     // MARK: - API
     var didSelectSetAt: ((IndexPath) -> Void)?
     
+    var didPullToRefresh: (() -> Void)?
+    
     func configureSetsDataSource(for publisher: Published<[MagicSetsListViewModel]>.Publisher) {
-        setsDataSource = MagicSetsDiffableDataSource(setsPublisher: publisher, for: setsTableView) { (tableView, index, viewModel) -> UITableViewCell? in
+        let shared = publisher.share()
+        
+        shared
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.setsTableView.refreshControl?.endRefreshing()
+            }.store(in: &cancellableStore)
+        
+        setsDataSource = MagicSetsDiffableDataSource(setsPublisher: shared, for: setsTableView) { (tableView, index, viewModel) -> UITableViewCell? in
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MagicSetsTableViewCell.identifier, for: index) as? MagicSetsTableViewCell else {
                 return nil
             }

@@ -22,6 +22,7 @@
 		625F539E2710A47E007F71B5 /* MagicSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F539D2710A47E007F71B5 /* MagicSetsView.swift */; };
 		625F53AD2714668B007F71B5 /* MagicSetsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F53AC2714668B007F71B5 /* MagicSetsViewTests.swift */; };
 		625F53B6271469FF007F71B5 /* MagicSetsViewControllerDelegateStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F53B5271469FF007F71B5 /* MagicSetsViewControllerDelegateStub.swift */; };
+		625F53BF2714A0C4007F71B5 /* MagicSetsCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 625F53BE2714A0C4007F71B5 /* MagicSetsCoordinatorTests.swift */; };
 		626A1C7B270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A1C7A270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift */; };
 		626A1C84270F34F90093A1BD /* MagicSetsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626A1C83270F34F90093A1BD /* MagicSetsSectionHeaderView.swift */; };
 		626A1CA1270F59760093A1BD /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 626A1CA0270F59760093A1BD /* SnapshotTesting */; };
@@ -81,6 +82,7 @@
 		625F539D2710A47E007F71B5 /* MagicSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsView.swift; sourceTree = "<group>"; };
 		625F53AC2714668B007F71B5 /* MagicSetsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewTests.swift; sourceTree = "<group>"; };
 		625F53B5271469FF007F71B5 /* MagicSetsViewControllerDelegateStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewControllerDelegateStub.swift; sourceTree = "<group>"; };
+		625F53BE2714A0C4007F71B5 /* MagicSetsCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsCoordinatorTests.swift; sourceTree = "<group>"; };
 		626A1C7A270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsListViewModelFactory.swift; sourceTree = "<group>"; };
 		626A1C83270F34F90093A1BD /* MagicSetsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsSectionHeaderView.swift; sourceTree = "<group>"; };
 		626A1CA9270F599C0093A1BD /* MagicSetsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewControllerTests.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		621DA3D92707A076004A04CF /* magic-appTests */ = {
 			isa = PBXGroup;
 			children = (
+				625F53BD2714A0AE007F71B5 /* Coordinators */,
 				625F53AB27146680007F71B5 /* Views */,
 				626A1CA8270F59890093A1BD /* ViewControllers */,
 				626A1C78270F1F880093A1BD /* Helpers */,
@@ -223,6 +226,14 @@
 				625F53B5271469FF007F71B5 /* MagicSetsViewControllerDelegateStub.swift */,
 			);
 			path = Stubs;
+			sourceTree = "<group>";
+		};
+		625F53BD2714A0AE007F71B5 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				625F53BE2714A0C4007F71B5 /* MagicSetsCoordinatorTests.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 		626A1C78270F1F880093A1BD /* Helpers */ = {
@@ -613,6 +624,7 @@
 				62F1F0A6270C81EC00C6AAC4 /* MagicSetsLogicControllerTests.swift in Sources */,
 				629516D3270CAFA100CAB088 /* MagicNetworkProtocolMock.swift in Sources */,
 				6239DB99270CF4A200B77563 /* MagicSetsViewModelTests.swift in Sources */,
+				625F53BF2714A0C4007F71B5 /* MagicSetsCoordinatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
