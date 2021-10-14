@@ -11,18 +11,18 @@ protocol MagicSetsViewModelProtocol: StatefulViewModel {
 
 final class MagicSetsViewModel {
     private let network: MagicNetworkProtocol
-    private let logicController: MagicSetsLogicController
+    private let logicController: MagicSetsLogicControllerProtocol
     private var model: MagicSetsLogicModel = MagicSetsLogicModel(sets: [], canFetch: true)
     @Published private var setsViewModelsPublisher: [MagicSetsListViewModel] = []
     private var selectedSetSubject = PassthroughSubject<MagicSetsCellViewModel, Never>()
     
     init(network: MagicNetworkProtocol = MagicNetwork(),
-         logicController: MagicSetsLogicController = MagicSetsLogicController()) {
+         logicController: MagicSetsLogicControllerProtocol = MagicSetsLogicController()) {
         self.network = network
         self.logicController = logicController
     }
     
-    private func handle(update: MagicSetsLogicController.Update) {
+    private func handle(update: MagicSetsLogicControllerUpdate) {
         switch update.effect {
         case .loadSet(at: let index):
             model = update.model
@@ -36,7 +36,7 @@ final class MagicSetsViewModel {
         }
     }
     
-    private func handle(event: MagicSetsLogicController.Event) {
+    private func handle(event: MagicSetsLogicControllerEvent) {
         let update = logicController.update(model, event)
         handle(update: update)
     }

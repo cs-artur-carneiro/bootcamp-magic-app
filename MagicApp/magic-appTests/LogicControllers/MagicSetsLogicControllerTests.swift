@@ -3,9 +3,9 @@ import MagicNetwork
 @testable import magic_app
 
 final class MagicSetsLogicControllerTests: XCTestCase {
-    typealias Effect = MagicSetsLogicController.Effect
-    typealias Event = MagicSetsLogicController.Event
-    typealias Update = MagicSetsLogicController.Update
+    typealias Effect = MagicSetsLogicControllerEffect
+    typealias Event = MagicSetsLogicControllerEvent
+    typealias Update = MagicSetsLogicControllerUpdate
     
     var sut: MagicSetsLogicController!
     
@@ -18,9 +18,9 @@ final class MagicSetsLogicControllerTests: XCTestCase {
     }
     
     func test_update_when_eventIs_setsRequested() {
-        let model = MagicSetsLogicModel(sets: Array(repeating: MagicSet(name: "Teste"), count: 10), canFetch: true)
+        let model = MagicSetsLogicModel(sets: Array(repeating: MagicSet(name: "Teste", code: "Code"), count: 10), canFetch: true)
         
-        let expectedModel = MagicSetsLogicModel(sets: Array(repeating: MagicSet(name: "Teste"), count: 10), canFetch: true)
+        let expectedModel = MagicSetsLogicModel(sets: Array(repeating: MagicSet(name: "Teste", code: "Code"), count: 10), canFetch: true)
         let expectedUpdate = Update(model: expectedModel, effect: Effect.loadSets)
         
         let sutUpdate = sut.update(model, .setsRequested)
@@ -30,9 +30,9 @@ final class MagicSetsLogicControllerTests: XCTestCase {
     
     func test_update_when_eventIs_setsLoaded() {
         let model = MagicSetsLogicModel(sets: [], canFetch: true)
-        let loadedModels = Array(repeating: MagicSet(name: "Teste"), count: 10)
+        let loadedModels = Array(repeating: MagicSet(name: "Teste", code: "Code"), count: 10)
         
-        let expectedModel = MagicSetsLogicModel(sets: Array(repeating: MagicSet(name: "Teste"), count: 10), canFetch: true)
+        let expectedModel = MagicSetsLogicModel(sets: Array(repeating: MagicSet(name: "Teste", code: "Code"), count: 10), canFetch: true)
         let expectedUpdate = Update(model: expectedModel, effect: Effect.none)
         
         let sutUpdate = sut.update(model, .setsLoaded(loadedModels))
@@ -63,10 +63,10 @@ final class MagicSetsLogicControllerTests: XCTestCase {
     }
     
     func test_update_when_eventIs_setSelected() {
-        let model = MagicSetsLogicModel(sets: Array(repeating: MagicSet(name: "Teste"), count: 10), canFetch: true)
+        let model = MagicSetsLogicModel(sets: Array(repeating: MagicSet(name: "Teste", code: "Code"), count: 10), canFetch: true)
         let index = IndexPath(row: 1, section: 0)
         
-        let expectedModel = MagicSetsLogicModel(sets: Array(repeating: MagicSet(name: "Teste"), count: 10), canFetch: true)
+        let expectedModel = MagicSetsLogicModel(sets: Array(repeating: MagicSet(name: "Teste", code: "Code"), count: 10), canFetch: true)
         let expectedUpdate = Update(model: expectedModel, effect: Effect.loadSet(at: index))
         
         let sutUpdate = sut.update(model, .setSelected(index))

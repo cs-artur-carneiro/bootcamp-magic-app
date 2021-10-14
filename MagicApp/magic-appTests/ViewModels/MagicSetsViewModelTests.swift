@@ -22,7 +22,7 @@ final class MagicSetsViewModelTests: XCTestCase {
     }
     
     func test_requireSets_whenIt_succeeds() {
-        let expectedValue = MagicSetResponse(sets: Array(repeating: MagicSet(name: "Teste"), count: 10))
+        let expectedValue = MagicSetResponse(sets: Array(repeating: MagicSet(name: "Teste", code: "Code"), count: 10))
         
         networkMock
             .setUp()
@@ -55,10 +55,10 @@ final class MagicSetsViewModelTests: XCTestCase {
     
     func test_setsBinding_whenRequest_succeeds() {
         let viewModelFactory = MagicSetsListViewModelFactory()
-        let expectedFirstResult = MagicSetResponse(sets: [MagicSet(name: "Teste"),
-                                                          MagicSet(name: "Teste"),
-                                                          MagicSet(name: "10th Edition"),
-                                                          MagicSet(name: "2017 Set")])
+        let expectedFirstResult = MagicSetResponse(sets: [MagicSet(name: "Teste", code: "Code"),
+                                                          MagicSet(name: "Teste", code: "Code"),
+                                                          MagicSet(name: "10th Edition", code: "Code"),
+                                                          MagicSet(name: "2017 Set", code: "Code")])
         
         networkMock
             .setUp()
@@ -78,7 +78,7 @@ final class MagicSetsViewModelTests: XCTestCase {
         
         sut.requestSets()
         
-        let expectedSecondResult = MagicSetResponse(sets: Array(repeating: MagicSet(name: "Exemplo"), count: 2))
+        let expectedSecondResult = MagicSetResponse(sets: Array(repeating: MagicSet(name: "Exemplo", code: "Code"), count: 2))
         
         let secondViewModel = viewModelFactory.makeLettersOnly()
         
@@ -123,10 +123,10 @@ final class MagicSetsViewModelTests: XCTestCase {
     }
     
     func test_setSelected() {
-        let expectedResult = MagicSetResponse(sets: [MagicSet(name: "Teste"),
-                                                          MagicSet(name: "Teste"),
-                                                          MagicSet(name: "10th Edition"),
-                                                          MagicSet(name: "2017 Set")])
+        let expectedResult = MagicSetResponse(sets: [MagicSet(name: "Teste", code: "Code"),
+                                                          MagicSet(name: "Teste", code: "Code"),
+                                                          MagicSet(name: "10th Edition", code: "Code"),
+                                                          MagicSet(name: "2017 Set", code: "Code")])
         
         networkMock
             .setUp()
