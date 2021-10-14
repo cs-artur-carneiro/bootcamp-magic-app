@@ -7,12 +7,12 @@ protocol MagicSetViewModelProtocol: StatefulViewModel {
 
 final class MagicSetViewModel  {
     private let network: MagicNetworkProtocol
-    private let logicController: MagicSetLogicController
+    private let logicController: MagicSetLogicControllerProtocol
     private var model: MagicSetLogicModel
 
     init(set: String,
          network: MagicNetworkProtocol = MagicNetwork(),
-         logicController: MagicSetLogicController = MagicSetLogicController()) {
+         logicController: MagicSetLogicControllerProtocol = MagicSetLogicController()) {
         self.model = MagicSetLogicModel(set: set, cards: [])
         self.network = network
         self.logicController = logicController
@@ -29,7 +29,7 @@ final class MagicSetViewModel  {
         }
     }
     
-    private func handle(update: MagicSetLogicController.Update) {
+    private func handle(update: MagicSetLogicControllerUpdate) {
         switch update.effect {
         case .loadCards:
             model = update.model

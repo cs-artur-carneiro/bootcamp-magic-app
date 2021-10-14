@@ -1,24 +1,28 @@
 import Foundation
 
-struct MagicSetLogicController {
-    func update(_ model: MagicSetLogicModel, _ event: Event) -> Update {
+protocol MagicSetLogicControllerProtocol {
+    func update(_ model: MagicSetLogicModel, _ event: MagicSetLogicControllerEvent) -> MagicSetLogicControllerUpdate
+}
+
+struct MagicSetLogicController: MagicSetLogicControllerProtocol {
+    func update(_ model: MagicSetLogicModel, _ event: MagicSetLogicControllerEvent) -> MagicSetLogicControllerUpdate {
         switch event {
         case .cardsRequested:
-            return Update(model: model, effect: .loadCards)
+            return MagicSetLogicControllerUpdate(model: model, effect: .loadCards)
         }
     }
-    
-    enum Event {
-        case cardsRequested
-    }
-    
-    enum Effect: Equatable {
-        case loadCards
-        case none
-    }
-    
-    struct Update: Equatable {
-        let model: MagicSetLogicModel
-        let effect: Effect
-    }
+}
+
+enum MagicSetLogicControllerEvent {
+    case cardsRequested
+}
+
+enum MagicSetLogicControllerEffect: Equatable {
+    case loadCards
+    case none
+}
+
+struct MagicSetLogicControllerUpdate: Equatable {
+    let model: MagicSetLogicModel
+    let effect: MagicSetLogicControllerEffect
 }

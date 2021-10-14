@@ -2,9 +2,9 @@ import XCTest
 @testable import magic_app
 
 final class MagicSetLogicControllerTests: XCTestCase {
-    typealias Effect = MagicSetLogicController.Effect
-    typealias Event = MagicSetLogicController.Event
-    typealias Update = MagicSetLogicController.Update
+    typealias Effect = MagicSetLogicControllerEffect
+    typealias Event = MagicSetLogicControllerEvent
+    typealias Update = MagicSetLogicControllerUpdate
     
     var sut: MagicSetLogicController!
     

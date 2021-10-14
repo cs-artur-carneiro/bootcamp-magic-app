@@ -3,9 +3,9 @@ import MagicNetwork
 @testable import magic_app
 
 final class MagicSetsLogicControllerTests: XCTestCase {
-    typealias Effect = MagicSetsLogicController.Effect
-    typealias Event = MagicSetsLogicController.Event
-    typealias Update = MagicSetsLogicController.Update
+    typealias Effect = MagicSetsLogicControllerEffect
+    typealias Event = MagicSetsLogicControllerEvent
+    typealias Update = MagicSetsLogicControllerUpdate
     
     var sut: MagicSetsLogicController!
     
