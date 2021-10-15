@@ -17,12 +17,11 @@ final class MagicSetsView: UIView, MagicSetsViewProtocol {
                            forCellReuseIdentifier: MagicSetsTableViewCell.identifier)
         tableView.register(MagicSetsSectionHeaderView.self,
                            forHeaderFooterViewReuseIdentifier: MagicSetsSectionHeaderView.identifier)
-        
-        let imageView = UIImageView(image: UIImage(named: "fundo"))
-        tableView.backgroundView = imageView
-        
+        tableView.backgroundColor = .clear
         return tableView
     }()
+    
+    private let backgroundImageView = UIImageView(image: UIImage(named: "fundo"))
     
     private var setsDataSource: MagicSetsDiffableDataSource?
     private var cancellableStore =  Set<AnyCancellable>()
@@ -54,15 +53,25 @@ final class MagicSetsView: UIView, MagicSetsViewProtocol {
     }
     
     private func setUpViewHierarchy() {
+        addSubview(backgroundImageView)
         addSubview(setsTableView)
     }
     
     private func layoutConstraints() {
         NSLayoutConstraint.activate([
-            setsTableView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            setsTableView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            setsTableView.widthAnchor.constraint(equalTo: widthAnchor),
-            setsTableView.heightAnchor.constraint(equalTo: heightAnchor)
+            backgroundImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            backgroundImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            backgroundImageView.widthAnchor.constraint(equalTo: widthAnchor),
+            backgroundImageView.heightAnchor.constraint(equalTo: heightAnchor)
+        ])
+        
+        let guides = safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            setsTableView.centerXAnchor.constraint(equalTo: guides.centerXAnchor),
+            setsTableView.centerYAnchor.constraint(equalTo: guides.centerYAnchor),
+            setsTableView.widthAnchor.constraint(equalTo: guides.widthAnchor),
+            setsTableView.heightAnchor.constraint(equalTo: guides.heightAnchor)
         ])
     }
     
