@@ -4,27 +4,27 @@ import Foundation
 struct MagicSetsListViewModelFactory {
     func makeLettersOnly() -> [MagicSetsListViewModel] {
         return [MagicSetsListViewModel(section: MagicSetsSection(id: 0, title: "E"),
-                                       sets: [MagicSetsCellViewModel(id: 0,
+                                       sets: [MagicSetsCellViewModel(id: "AAA",
                                                                      title: "Exemplo",
                                                                      lastInSection: false),
-                                              MagicSetsCellViewModel(id: 1,
+                                              MagicSetsCellViewModel(id: "BBB",
                                                                      title: "Exemplo",
                                                                      lastInSection: true)])]
     }
     
     func makeNumbersAndLetters() -> [MagicSetsListViewModel] {
         return [MagicSetsListViewModel(section: MagicSetsSection(id: 0, title: "#"),
-                                       sets: [MagicSetsCellViewModel(id: 0,
+                                       sets: [MagicSetsCellViewModel(id: "AAA",
                                                                      title: "10th Edition",
                                                                      lastInSection: false),
-                                              MagicSetsCellViewModel(id: 1,
+                                              MagicSetsCellViewModel(id: "BBB",
                                                                      title: "2017 Set",
                                                                      lastInSection: true)]),
                 MagicSetsListViewModel(section: MagicSetsSection(id: 1, title: "T"),
-                                       sets: [MagicSetsCellViewModel(id: 0,
+                                       sets: [MagicSetsCellViewModel(id: "CCC",
                                                                      title: "Teste",
                                                                      lastInSection: false),
-                                              MagicSetsCellViewModel(id: 1,
+                                              MagicSetsCellViewModel(id: "DDD",
                                                                      title: "Teste",
                                                                      lastInSection: true)])]
     }

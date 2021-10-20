@@ -19,5 +19,10 @@ final class MagicSetsCoordinator: Coordinator {
 
 extension MagicSetsCoordinator: MagicSetsViewControllerDelegate {
     func didSelectSet(_ set: MagicSetsCellViewModel) {
+        let viewModel = MagicSetViewModel(setId: set.id, setName: set.title)
+        let setView = MagicSetView()
+        let controller = MagicSetViewController(setView: setView,
+                                                viewModel: viewModel)
+        navigationController.pushViewController(controller, animated: true)
     }
 }

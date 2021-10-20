@@ -59,14 +59,14 @@ final class MagicSetsViewModel {
     private func order(sets: [MagicSet], basedOn initials: [Character]) -> [MagicSetsListViewModel] {
         var sectionId: Int = -1
         return initials.map { header in
-            var setId: Int = -1
+            var currentSetIndex: Int = -1
             // TODO: Strong ou Weak?
             let setsForHeader = self.filter(sets: sets, forHeader: header).sorted(by: { $0.name < $1.name } )
             
             let sets = setsForHeader.map { (set) -> MagicSetsCellViewModel in
-                setId += 1
-                let lastInSection = setId == setsForHeader.count - 1
-                return MagicSetsCellViewModel(id: setId, title: set.name, lastInSection: lastInSection)
+                currentSetIndex += 1
+                let lastInSection = currentSetIndex == setsForHeader.count - 1
+                return MagicSetsCellViewModel(id: set.code, title: set.name, lastInSection: lastInSection)
             }
             
             sectionId += 1

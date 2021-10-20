@@ -17,12 +17,48 @@ final class MagicSetLogicControllerTests: XCTestCase {
     }
     
     func test_update_when_eventIs_cardsRequested() {
-        let model = MagicSetLogicModel(set: "SET", cards: [])
+        let model = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [])
         
-        let expectedModel = MagicSetLogicModel(set: "SET", cards: [])
+        let expectedModel = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [])
         let expectedUpdate = Update(model: expectedModel, effect: .loadCards)
         
         let sutUpdate = sut.update(model, .cardsRequested)
+        
+        XCTAssertEqual(sutUpdate, expectedUpdate)
+    }
+    
+    func test_update_when_eventIs_cardsLoaded() {
+        let cards = [Card(name: "Carta",
+                          set: "SET",
+                          imageUrl: "url",
+                          id: "ID",
+                          type: "Creature"),
+                     Card(name: "Cartinha",
+                          set: "SET",
+                          imageUrl: "urlDaImagem",
+                          id: "IDD",
+                          type: "Creature")]
+        
+        
+        let expectedCards: [MagicSetLogicModel.Card] = cards.map { MagicSetLogicModel.Card(card: $0, isFavorite: false) }
+        
+        let model = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [])
+        
+        let expectedModel = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: expectedCards)
+        let expectedUpdate = Update(model: expectedModel, effect: .none)
+        
+        let sutUpdate = sut.update(model, .cardsLoaded(cards))
+        
+        XCTAssertEqual(sutUpdate, expectedUpdate)
+    }
+    
+    func test_update_when_eventIs_cardsRequestFailed() {
+        let model = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [])
+        
+        let expectedModel = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [])
+        let expectedUpdate = Update(model: expectedModel, effect: .none)
+        
+        let sutUpdate = sut.update(model, .cardsRequestFailed)
         
         XCTAssertEqual(sutUpdate, expectedUpdate)
     }

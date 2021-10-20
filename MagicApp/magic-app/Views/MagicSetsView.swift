@@ -21,7 +21,12 @@ final class MagicSetsView: UIView, MagicSetsViewProtocol {
         return tableView
     }()
     
-    private let backgroundImageView = UIImageView(image: UIImage(named: "fundo"))
+    private let backgroundImageView: UIImageView = {
+        let image = UIImageView(image: UIImage(named: "fundo"))
+        image.contentMode = .scaleToFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
     
     private var setsDataSource: MagicSetsDiffableDataSource?
     private var cancellableStore =  Set<AnyCancellable>()

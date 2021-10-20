@@ -31,12 +31,16 @@ final class MagicSetsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Expansions"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.largeTitleDisplayMode = .always
         
         setUpBindings()
         
         viewModel.requestSets()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.largeTitleDisplayMode = .always
     }
     
     private func setUpBindings() {

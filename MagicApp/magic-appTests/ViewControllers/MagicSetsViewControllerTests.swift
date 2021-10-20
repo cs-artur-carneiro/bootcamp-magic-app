@@ -34,6 +34,17 @@ final class MagicSetsViewControllerTests: XCTestCase {
         assertSnapshot(matching: sut, as: .wait(for: 1.0, on: Snapshotting.image(on: .iPhoneSe)))
     }
     
+    func test_initial_state_onMaxSize() {
+        viewModel
+            .setUp()
+            .arrange(.sets(MagicSetsListViewModelFactory().makeNumbersAndLetters()))
+            .execute()
+        
+        sut.beginAppearanceTransition(true, animated: false)
+        
+        assertSnapshot(matching: sut, as: .wait(for: 1.0, on: Snapshotting.image(on: .iPhoneXsMax)))
+    }
+    
     func test_binding_for_setSelected() {
         let index = IndexPath(row: 0, section: 0)
         
@@ -53,7 +64,7 @@ final class MagicSetsViewControllerTests: XCTestCase {
     
     func test_setSelected_calls_delegate() {
         let index = IndexPath(row: 0, section: 0)
-        let expectedSet = MagicSetsCellViewModel(id: 0,
+        let expectedSet = MagicSetsCellViewModel(id: "AAA",
                                                  title: "10th Edition",
                                                  lastInSection: false)
         
@@ -75,5 +86,19 @@ final class MagicSetsViewControllerTests: XCTestCase {
         wait(for: [expectation], timeout: 1.0)
         
         XCTAssertEqual(delegateStub.setSelected, expectedSet)
+    }
+    
+    func test_navigationController_configuredCorrectly_atViewWillAppear() {
+        _ = UINavigationController(rootViewController: sut)
+        
+        viewModel
+            .setUp()
+            .arrange(.sets(MagicSetsListViewModelFactory().makeNumbersAndLetters()))
+            .execute()
+        
+        sut.beginAppearanceTransition(true, animated: false)
+        
+        XCTAssertTrue(sut.navigationController?.navigationBar.prefersLargeTitles ?? false)
+        XCTAssertEqual(sut.navigationItem.largeTitleDisplayMode, .always)
     }
 }

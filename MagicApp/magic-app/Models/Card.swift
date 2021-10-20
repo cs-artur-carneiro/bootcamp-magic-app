@@ -5,5 +5,5 @@ struct Card: Decodable {
     let set: String
     let imageUrl: String
     let id: String
-    let types: [String]
+    let type: String
 }
