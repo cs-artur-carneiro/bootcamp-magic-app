@@ -13,23 +13,23 @@ final class MagicSetViewModel  {
     private var model: MagicSetLogicModel
     @Published private var listViewModel: [MagicSetListViewModel] = []
     
-    init(setId: String,
-         setName: String,
+    init(setModel: MagicSetLogicModel,
          network: MagicNetworkProtocol = MagicNetwork(),
          logicController: MagicSetLogicControllerProtocol = MagicSetLogicController()) {
-        self.model = MagicSetLogicModel(setId: setId, setName: setName, cards: [])
+        self.model = setModel
         self.network = network
         self.logicController = logicController
     }
     
-    private func loadCards(from set: String) {
-        network.request(CardsResource.cards(from: set), ofType: CardsResponse.self) { [weak self] (result) in
+    private func loadCards(from set: String, atPage page: Int) {
+        network.request(CardsResource.cards(from: set, atPage: model.currentPage), ofType: CardsResponse.self) { [weak self] (result) in
             switch result {
             case .success(let response):
-                if let response = response {
-                    self?.handle(event: .cardsLoaded(response.cards))
+                if let cardResponse = response.data,
+                   let numberOfCards = Int(response.metadata?["total-count"] as? String ?? "") {
+                    self?.handle(event: .cardsLoaded(cardResponse.cards, atPage: page, ofTotal: numberOfCards))
                 } else {
-                    self?.handle(event: .cardsLoaded([]))
+                    self?.handle(event: .cardsLoaded([], atPage: 1, ofTotal: 0))
                 }
             case .failure:
                 self?.handle(event: .cardsRequestFailed)
@@ -41,7 +41,7 @@ final class MagicSetViewModel  {
         switch update.effect {
         case .loadCards:
             model = update.model
-            loadCards(from: model.setId)
+            loadCards(from: model.setId, atPage: model.currentPage)
         case .none:
             model = update.model
             listViewModel = map(cards: model.cards)

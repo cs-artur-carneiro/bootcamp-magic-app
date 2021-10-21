@@ -9,6 +9,7 @@ final class MagicNetworkProtocolMock: MagicNetworkProtocol, MagicMock {
     var actions: [Action] = []
     
     private var result: Result<Decodable?, MagicNetworkError> = .failure(.requestFailed)
+    private var responseHeaders: [AnyHashable: Any]?
     
     func setUp() -> ArrangementProxy<Arrangement> {
         let proxy = ArrangementProxy<Arrangement>([]) { arrangements in
@@ -16,6 +17,8 @@ final class MagicNetworkProtocolMock: MagicNetworkProtocol, MagicMock {
                 switch $0 {
                 case .result(let result):
                     self?.result = result
+                case .responseHeaders(let headers):
+                    self?.responseHeaders = headers
                 }
             }
         }
@@ -27,15 +30,15 @@ final class MagicNetworkProtocolMock: MagicNetworkProtocol, MagicMock {
         result = .failure(.requestFailed)
     }
     
-    func request<T>(_ resource: Resource, ofType type: T.Type, completion: @escaping (Result<T?, MagicNetworkError>) -> Void) where T : Decodable {
+    func request<T>(_ resource: Resource, ofType type: T.Type, completion: @escaping (Result<Response<T>, MagicNetworkError>) -> Void) where T : Decodable {
         actions.append(.request(resource))
         actions.append(.response(result))
         switch result {
-        case .success(let value):
-            if let value = value as? T {
-                completion(.success(value))
+        case .success(let response):
+            if let response = response as? T {
+                completion(.success(.init(data: response, metadata: responseHeaders)))
             } else {
-                completion(.success(nil))
+                completion(.success(.init(data: nil, metadata: nil)))
             }
         case .failure(let error):
             completion(.failure(error))
@@ -76,5 +79,6 @@ enum MagicNetworkProtocolMockAction: Equatable {
 
 // MARK: - Arrangement
 enum MagicNetworkProtocolMockArrangement {
+    case responseHeaders([AnyHashable: Any]?)
     case result(Result<Decodable?, MagicNetworkError>)
 }

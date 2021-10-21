@@ -91,8 +91,8 @@ final class MagicSetsViewModel {
     private func loadSets() {
         network.request(SetsResource.all, ofType: MagicSetResponse.self) { [weak self] result in
             switch result {
-            case .success(let sets):
-                if let sets = sets {
+            case .success(let response):
+                if let sets = response.data {
                     self?.handle(event: .setsLoaded(sets.sets))
                 } else {
                     self?.handle(event: .setsLoaded([]))

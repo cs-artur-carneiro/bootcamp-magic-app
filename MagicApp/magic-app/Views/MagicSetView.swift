@@ -132,4 +132,5 @@ final class MagicSetView: UIView, MagicSetViewProtocol {
 }
 
 extension MagicSetView: UICollectionViewDelegate {
+    
 }

@@ -1,7 +1,7 @@
 import Foundation
 
 public protocol MagicNetworkProtocol {
-    func request<T: Decodable>(_ resource: Resource, ofType type: T.Type, completion: @escaping (Result<T?, MagicNetworkError>) -> Void)
+    func request<T: Decodable>(_ resource: Resource, ofType type: T.Type, completion: @escaping (Result<Response<T>, MagicNetworkError>) -> Void)
 }
 
 public struct MagicNetwork: MagicNetworkProtocol {
@@ -14,7 +14,7 @@ public struct MagicNetwork: MagicNetworkProtocol {
         self.decoder = decoder
     }
     
-    public func request<T: Decodable>(_ resource: Resource, ofType type: T.Type, completion: @escaping (Result<T?, MagicNetworkError>) -> Void) {
+    public func request<T: Decodable>(_ resource: Resource, ofType type: T.Type, completion: @escaping (Result<Response<T>, MagicNetworkError>) -> Void) {
         guard let request = makeURLRequest(from: resource) else {
             return completion(.failure(.invalidResource))
         }
@@ -30,12 +30,12 @@ public struct MagicNetwork: MagicNetworkProtocol {
                 }
                 
                 guard let data = data else {
-                    return completion(.success(nil))
+                    return completion(.success(Response(data: nil, metadata: httpResponse.allHeaderFields)))
                 }
                 
                 do {
                     let decoded = try decoder.decode(T.self, from: data)
-                    return completion(.success(decoded))
+                    return completion(.success(Response(data: decoded, metadata: httpResponse.allHeaderFields)))
                 } catch {
                     return completion(.failure(.decodingFailed))
                 }

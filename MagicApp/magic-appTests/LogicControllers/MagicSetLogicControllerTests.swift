@@ -17,9 +17,9 @@ final class MagicSetLogicControllerTests: XCTestCase {
     }
     
     func test_update_when_eventIs_cardsRequested() {
-        let model = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [])
+        let model = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [], currentPage: 0, numberOfCards: 0)
         
-        let expectedModel = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [])
+        let expectedModel = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [], currentPage: 0, numberOfCards: 0)
         let expectedUpdate = Update(model: expectedModel, effect: .loadCards)
         
         let sutUpdate = sut.update(model, .cardsRequested)
@@ -42,20 +42,20 @@ final class MagicSetLogicControllerTests: XCTestCase {
         
         let expectedCards: [MagicSetLogicModel.Card] = cards.map { MagicSetLogicModel.Card(card: $0, isFavorite: false) }
         
-        let model = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [])
+        let model = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [], currentPage: 0, numberOfCards: 2)
         
-        let expectedModel = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: expectedCards)
+        let expectedModel = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: expectedCards, currentPage: 0, numberOfCards: 2)
         let expectedUpdate = Update(model: expectedModel, effect: .none)
         
-        let sutUpdate = sut.update(model, .cardsLoaded(cards))
+        let sutUpdate = sut.update(model, .cardsLoaded(cards, atPage: 0, ofTotal: 2))
         
         XCTAssertEqual(sutUpdate, expectedUpdate)
     }
     
     func test_update_when_eventIs_cardsRequestFailed() {
-        let model = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [])
+        let model = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [], currentPage: 0, numberOfCards: 0)
         
-        let expectedModel = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [])
+        let expectedModel = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [], currentPage: 0, numberOfCards: 0)
         let expectedUpdate = Update(model: expectedModel, effect: .none)
         
         let sutUpdate = sut.update(model, .cardsRequestFailed)

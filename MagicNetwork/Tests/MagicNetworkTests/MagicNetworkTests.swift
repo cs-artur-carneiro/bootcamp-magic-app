@@ -35,7 +35,7 @@ final class MagicNetworkTests: XCTestCase {
         
         sut.request(Resource(url: "URL"), ofType: DecodingDummy.self) {
             if case .success(let result) = $0 {
-                dataFromResult = result
+                dataFromResult = result.data
             }
         }
         
@@ -62,7 +62,7 @@ final class MagicNetworkTests: XCTestCase {
         
         sut.request(Resource(url: "URL"), ofType: Data.self) {
             if case .success(let result) = $0 {
-                dataFromResult = result
+                dataFromResult = result.data
             }
         }
         

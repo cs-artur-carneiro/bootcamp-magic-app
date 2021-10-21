@@ -4,6 +4,8 @@ struct MagicSetLogicModel: Equatable {
     let setId: String
     let setName: String
     let cards: [MagicSetLogicModel.Card]
+    let currentPage: Int
+    let numberOfCards: Int
     
     struct Card: Equatable {
         let name: String

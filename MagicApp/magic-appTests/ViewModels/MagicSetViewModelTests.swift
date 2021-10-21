@@ -10,14 +10,16 @@ final class MagicSetViewModelTests: XCTestCase {
     
     override func setUp() {
         networkMock = MagicNetworkProtocolMock()
-        sut = MagicSetViewModel(setId: "ID", setName: "NAME", network: networkMock)
+        let model = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [], currentPage: 0, numberOfCards: 0)
+        sut = MagicSetViewModel(setModel: model,
+                                network: networkMock)
         cancellableStore = Set<AnyCancellable>()
     }
     
     override func tearDown() {
         networkMock = nil
-        sut = nil
         cancellableStore = nil
+        sut = nil
     }
     
     func test_fetchCards_whenIt_succeeds() {
@@ -36,7 +38,7 @@ final class MagicSetViewModelTests: XCTestCase {
             .arrange(.result(.success(expectedResponse)))
             .execute()
         
-        let expectedActions: [MagicNetworkProtocolMockAction] = [.request(CardsResource.cards(from: "ID")),
+        let expectedActions: [MagicNetworkProtocolMockAction] = [.request(CardsResource.cards(from: "SET", atPage: 0)),
                                                                  .response(.success(expectedResponse))]
         
         sut.fetchCards()
@@ -52,7 +54,7 @@ final class MagicSetViewModelTests: XCTestCase {
             .arrange(.result(.failure(expectedError)))
             .execute()
         
-        let expectedActions: [MagicNetworkProtocolMockAction] = [.request(CardsResource.cards(from: "ID")),
+        let expectedActions: [MagicNetworkProtocolMockAction] = [.request(CardsResource.cards(from: "SET", atPage: 0)),
                                                                  .response(.failure(expectedError))]
         
         sut.fetchCards()
@@ -62,33 +64,7 @@ final class MagicSetViewModelTests: XCTestCase {
     
     func test_cardsBinding_whenRequest_succeeds() {
         let viewModelFactory = MagicSetListViewModelFactory()
-        let expectedFirstResponse = CardsResponse(
-            cards: [
-                Card(name: "AAA", set: "NAME", imageUrl: "url", id: "AAA", type: "Creature"),
-                Card(name: "BBB", set: "NAME", imageUrl: "url", id: "BBB", type: "Creature"),
-                Card(name: "CCC", set: "NAME", imageUrl: "url", id: "CCC", type: "Creature")
-            ]
-        )
-        
-        networkMock
-            .setUp()
-            .arrange(.result(.success(expectedFirstResponse)))
-            .execute()
-        
-        let expectation = XCTestExpectation(description: #function)
-        
-        let firstViewModel = viewModelFactory.makeCreatureOnly()
-        
-        var viewModelsFromBinding: [[MagicSetListViewModel]] = []
-        
-        sut.cardsPublisher.sink { viewModels in
-            viewModelsFromBinding.append(viewModels)
-            expectation.fulfill()
-        }.store(in: &cancellableStore)
-        
-        sut.fetchCards()
-        
-        let expectedSecondReponse = CardsResponse(
+        let expectedResponse = CardsResponse(
             cards: [
                 Card(name: "AAA", set: "NAME", imageUrl: "url", id: "AAA", type: "Creature"),
                 Card(name: "BBB", set: "NAME", imageUrl: "url", id: "BBB", type: "Creature"),
@@ -99,16 +75,26 @@ final class MagicSetViewModelTests: XCTestCase {
             ]
         )
         
-        let secondViewModel = viewModelFactory.make()
-        
         networkMock
             .setUp()
-            .arrange(.result(.success(expectedSecondReponse)))
+            .arrange(.responseHeaders(["total-count": "6"]))
+            .arrange(.result(.success(expectedResponse)))
             .execute()
         
-        sut.fetchCards()
+        let expectation = XCTestExpectation(description: #function)
         
-        let expectedTimeline: [[MagicSetListViewModel]] = [[], firstViewModel, secondViewModel]
+        let viewModel = viewModelFactory.make()
+        
+        var viewModelsFromBinding: [[MagicSetListViewModel]] = []
+        
+        sut.cardsPublisher.sink { viewModels in
+            viewModelsFromBinding.append(viewModels)
+            expectation.fulfill()
+        }.store(in: &cancellableStore)
+        
+        sut.fetchCards()
+
+        let expectedTimeline: [[MagicSetListViewModel]] = [[], viewModel]
         
         wait(for: [expectation], timeout: 1.0)
         
