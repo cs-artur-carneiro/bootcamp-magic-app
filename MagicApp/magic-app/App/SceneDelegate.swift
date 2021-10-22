@@ -18,20 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        let tabBarController = UITabBarController(nibName: nil, bundle: nil)
-        tabBarController.tabBar.barTintColor = .clear
-        tabBarController.tabBar.backgroundImage = UIImage()
-        tabBarController.tabBar.shadowImage = UIImage()
-        let viewController = UINavigationController()
-        viewController.navigationBar.prefersLargeTitles = true
-        viewController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        viewController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        tabBarController.viewControllers = [viewController, UIViewController()]
-        tabBarController.selectedIndex = 0
-        window?.rootViewController = tabBarController
+        let navController = UINavigationController()
+        navController.navigationBar.prefersLargeTitles = true
+        navController.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navController.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navController.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        navController.navigationBar.shadowImage = UIImage()
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
         
-        coordinator = MagicSetsCoordinator(navigationController: viewController)
+        coordinator = MagicSetsCoordinator(navigationController: navController)
         coordinator?.start()
     }
 

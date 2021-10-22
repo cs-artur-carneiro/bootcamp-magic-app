@@ -44,7 +44,7 @@ final class MagicSetsLogicControllerTests: XCTestCase {
         let model = MagicSetsLogicModel(sets: [], canFetch: true)
         
         let expectedModel = MagicSetsLogicModel(sets: [], canFetch: true)
-        let expectedUpdate = Update(model: expectedModel, effect: Effect.none)
+        let expectedUpdate = Update(model: expectedModel, effect: Effect.displayError("Request for expansions failed. Check your internet connection and try again."))
         
         let sutUpdate = sut.update(model, .setsRequestFailed)
         

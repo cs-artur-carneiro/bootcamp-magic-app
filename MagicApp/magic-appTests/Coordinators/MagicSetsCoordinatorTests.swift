@@ -25,5 +25,17 @@ final class MagicSetsCoordinatorTests: XCTestCase {
         let expectedActions: [UINavigationControllerStubAction] = [.pushedViewController(currentViewController)]
         
         XCTAssertEqual(expectedActions, navigationControllerStub.actions)
+        XCTAssertTrue(currentViewController is MagicSetsViewController)
+    }
+    
+    func test_didSelectSet() throws {
+        sut.didSelectSet(MagicSetsCellViewModel(id: "AAA", title: "Teste", lastInSection: false))
+        
+        let currentViewController = try XCTUnwrap(sut.navigationController.topViewController)
+        
+        let expectedActions: [UINavigationControllerStubAction] = [.pushedViewController(currentViewController)]
+        
+        XCTAssertEqual(expectedActions, navigationControllerStub.actions)
+        XCTAssertTrue(currentViewController is MagicSetViewController)
     }
 }

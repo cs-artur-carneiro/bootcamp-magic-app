@@ -24,6 +24,7 @@ final class MagicSetsViewTests: XCTestCase {
         
         viewModelMock
             .setUp()
+            .arrange(.state(.usable))
             .arrange(.sets(MagicSetsListViewModelFactory().makeLettersOnly()))
             .execute()
         

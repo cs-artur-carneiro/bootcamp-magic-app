@@ -1,10 +1,6 @@
 import UIKit
 
 final class MagicSetsTableViewCell: UITableViewCell {
-    static var identifier: String {
-        return String(describing: self)
-    }
-    
     private let separatorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false

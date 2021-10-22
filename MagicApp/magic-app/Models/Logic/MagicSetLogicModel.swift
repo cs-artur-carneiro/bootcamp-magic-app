@@ -1,8 +1,11 @@
 import Foundation
 
 struct MagicSetLogicModel: Equatable {
-    let set: String
+    let setId: String
+    let setName: String
     let cards: [MagicSetLogicModel.Card]
+    let currentPage: Int
+    let numberOfCards: Int
     
     struct Card: Equatable {
         let name: String
@@ -11,5 +14,16 @@ struct MagicSetLogicModel: Equatable {
         let id: String
         let type: String
         let isFavorite: Bool
+    }
+}
+
+extension MagicSetLogicModel.Card {
+    init(card: Card, isFavorite: Bool) {
+        self.id = card.id
+        self.name = card.name
+        self.set = card.set
+        self.type = card.type
+        self.imageUrl = card.imageUrl
+        self.isFavorite = isFavorite
     }
 }

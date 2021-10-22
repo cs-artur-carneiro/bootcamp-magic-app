@@ -44,6 +44,25 @@
 		629516C4270C9F8900CAB088 /* MagicNetwork in Frameworks */ = {isa = PBXBuildFile; productRef = 629516C3270C9F8900CAB088 /* MagicNetwork */; };
 		629516D3270CAFA100CAB088 /* MagicNetworkProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629516D2270CAFA100CAB088 /* MagicNetworkProtocolMock.swift */; };
 		629516F6270CCB0E00CAB088 /* MagicSetsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629516F5270CCB0E00CAB088 /* MagicSetsTableViewCell.swift */; };
+		629578F72719AC8800DB7D52 /* MagicSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629578F62719AC8800DB7D52 /* MagicSetView.swift */; };
+		629578FC271A0A9400DB7D52 /* MagicSetDiffableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629578FB271A0A9400DB7D52 /* MagicSetDiffableDataSource.swift */; };
+		62957901271A0ADF00DB7D52 /* MagicSetSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957900271A0ADF00DB7D52 /* MagicSetSection.swift */; };
+		62957906271A0BAA00DB7D52 /* MagicSetCardCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957905271A0BAA00DB7D52 /* MagicSetCardCellViewModel.swift */; };
+		6295790D271A0C4F00DB7D52 /* MagicSetListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6295790C271A0C4F00DB7D52 /* MagicSetListViewModel.swift */; };
+		629579A3271DAFB900DB7D52 /* MagicSetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629579A2271DAFB900DB7D52 /* MagicSetCollectionViewCell.swift */; };
+		629579AE271DE05400DB7D52 /* MagicSetSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629579AD271DE05400DB7D52 /* MagicSetSectionHeaderView.swift */; };
+		62957A7227207DE900DB7D52 /* MagicSetViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957A7127207DE900DB7D52 /* MagicSetViewControllerTests.swift */; };
+		62957A7727207F6700DB7D52 /* MagicSetViewModelProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957A7627207F6700DB7D52 /* MagicSetViewModelProtocolMock.swift */; };
+		62957A7F27209BFF00DB7D52 /* MagicSetListViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957A7E27209BFF00DB7D52 /* MagicSetListViewModelFactory.swift */; };
+		62957A842720A6C700DB7D52 /* MagicSetViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957A832720A6C700DB7D52 /* MagicSetViewModelTests.swift */; };
+		62957A892720AD6200DB7D52 /* MagicSetViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957A882720AD6200DB7D52 /* MagicSetViewTests.swift */; };
+		62957AC82722EAA400DB7D52 /* IdentifiableCollectionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957AC72722EAA400DB7D52 /* IdentifiableCollectionComponent.swift */; };
+		62957AD12722EB0500DB7D52 /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957AD02722EB0500DB7D52 /* UITableViewCell+Ext.swift */; };
+		62957AD62722EBDE00DB7D52 /* UITableViewHeaderFooterView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957AD52722EBDE00DB7D52 /* UITableViewHeaderFooterView+Ext.swift */; };
+		62957ADB2722EC0E00DB7D52 /* UICollectionReusableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957ADA2722EC0E00DB7D52 /* UICollectionReusableView+Ext.swift */; };
+		62957AE527231FCF00DB7D52 /* MagicSetsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957AE427231FCF00DB7D52 /* MagicSetsState.swift */; };
+		62957AEA2723265200DB7D52 /* MagicSetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957AE92723265200DB7D52 /* MagicSetState.swift */; };
+		62957AF02723502B00DB7D52 /* MagicSetCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957AEF2723502B00DB7D52 /* MagicSetCompositionalLayout.swift */; };
 		62F1F055270B64B500C6AAC4 /* SetsResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F054270B64B500C6AAC4 /* SetsResource.swift */; };
 		62F1F065270B685A00C6AAC4 /* MagicSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F064270B685A00C6AAC4 /* MagicSetsViewModel.swift */; };
 		62F1F07A270B783A00C6AAC4 /* MagicSetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F079270B783A00C6AAC4 /* MagicSetResponse.swift */; };
@@ -113,6 +132,25 @@
 		629516C8270CAEB200CAB088 /* MagicSetsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewModelTests.swift; sourceTree = "<group>"; };
 		629516D2270CAFA100CAB088 /* MagicNetworkProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicNetworkProtocolMock.swift; sourceTree = "<group>"; };
 		629516F5270CCB0E00CAB088 /* MagicSetsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsTableViewCell.swift; sourceTree = "<group>"; };
+		629578F62719AC8800DB7D52 /* MagicSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetView.swift; sourceTree = "<group>"; };
+		629578FB271A0A9400DB7D52 /* MagicSetDiffableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetDiffableDataSource.swift; sourceTree = "<group>"; };
+		62957900271A0ADF00DB7D52 /* MagicSetSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetSection.swift; sourceTree = "<group>"; };
+		62957905271A0BAA00DB7D52 /* MagicSetCardCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetCardCellViewModel.swift; sourceTree = "<group>"; };
+		6295790C271A0C4F00DB7D52 /* MagicSetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetListViewModel.swift; sourceTree = "<group>"; };
+		629579A2271DAFB900DB7D52 /* MagicSetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetCollectionViewCell.swift; sourceTree = "<group>"; };
+		629579AD271DE05400DB7D52 /* MagicSetSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetSectionHeaderView.swift; sourceTree = "<group>"; };
+		62957A7127207DE900DB7D52 /* MagicSetViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetViewControllerTests.swift; sourceTree = "<group>"; };
+		62957A7627207F6700DB7D52 /* MagicSetViewModelProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetViewModelProtocolMock.swift; sourceTree = "<group>"; };
+		62957A7E27209BFF00DB7D52 /* MagicSetListViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetListViewModelFactory.swift; sourceTree = "<group>"; };
+		62957A832720A6C700DB7D52 /* MagicSetViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetViewModelTests.swift; sourceTree = "<group>"; };
+		62957A882720AD6200DB7D52 /* MagicSetViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetViewTests.swift; sourceTree = "<group>"; };
+		62957AC72722EAA400DB7D52 /* IdentifiableCollectionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifiableCollectionComponent.swift; sourceTree = "<group>"; };
+		62957AD02722EB0500DB7D52 /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
+		62957AD52722EBDE00DB7D52 /* UITableViewHeaderFooterView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Ext.swift"; sourceTree = "<group>"; };
+		62957ADA2722EC0E00DB7D52 /* UICollectionReusableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Ext.swift"; sourceTree = "<group>"; };
+		62957AE427231FCF00DB7D52 /* MagicSetsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsState.swift; sourceTree = "<group>"; };
+		62957AE92723265200DB7D52 /* MagicSetState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetState.swift; sourceTree = "<group>"; };
+		62957AEF2723502B00DB7D52 /* MagicSetCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetCompositionalLayout.swift; sourceTree = "<group>"; };
 		62F1F054270B64B500C6AAC4 /* SetsResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsResource.swift; sourceTree = "<group>"; };
 		62F1F064270B685A00C6AAC4 /* MagicSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewModel.swift; sourceTree = "<group>"; };
 		62F1F079270B783A00C6AAC4 /* MagicSetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetResponse.swift; sourceTree = "<group>"; };
@@ -217,6 +255,7 @@
 			children = (
 				6292BF15270DCDEE00EF9B2A /* Sections */,
 				6239DB9E270DCC7600B77563 /* MagicSetsDiffableDataSource.swift */,
+				629578FB271A0A9400DB7D52 /* MagicSetDiffableDataSource.swift */,
 			);
 			path = "Data Sources";
 			sourceTree = "<group>";
@@ -234,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				625F53AC2714668B007F71B5 /* MagicSetsViewTests.swift */,
+				62957A882720AD6200DB7D52 /* MagicSetViewTests.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				626A1C7A270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift */,
+				62957A7E27209BFF00DB7D52 /* MagicSetListViewModelFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -275,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				626A1C83270F34F90093A1BD /* MagicSetsSectionHeaderView.swift */,
+				629579AD271DE05400DB7D52 /* MagicSetSectionHeaderView.swift */,
 			);
 			path = Headers;
 			sourceTree = "<group>";
@@ -283,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				626A1CA9270F599C0093A1BD /* MagicSetsViewControllerTests.swift */,
+				62957A7127207DE900DB7D52 /* MagicSetViewControllerTests.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -291,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				6292BF16270DCDFC00EF9B2A /* MagicSetsSection.swift */,
+				62957900271A0ADF00DB7D52 /* MagicSetSection.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -308,8 +352,8 @@
 		6292BF1C270DCE1A00EF9B2A /* Stateless */ = {
 			isa = PBXGroup;
 			children = (
-				6292BF1D270DCE2900EF9B2A /* MagicSetsCellViewModel.swift */,
-				6292BF26270DCE8100EF9B2A /* MagicSetsListViewModel.swift */,
+				6295790B271A0C3700DB7D52 /* MagicSet */,
+				6295790A271A0C2E00DB7D52 /* MagicSets */,
 			);
 			path = Stateless;
 			sourceTree = "<group>";
@@ -337,6 +381,7 @@
 			children = (
 				629516D2270CAFA100CAB088 /* MagicNetworkProtocolMock.swift */,
 				626A1CB4270F7FFD0093A1BD /* MagicSetsViewModelProtocolMock.swift */,
+				62957A7627207F6700DB7D52 /* MagicSetViewModelProtocolMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -380,10 +425,14 @@
 		629516F4270CCACC00CAB088 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				62957AEE2723501C00DB7D52 /* Layout */,
+				62957ACF2722EAF700DB7D52 /* Extensions */,
+				62957AC62722EA9500DB7D52 /* Protocols */,
 				626A1C82270F34E70093A1BD /* Headers */,
 				6239DBA3270DCCB700B77563 /* Data Sources */,
 				629516FD270CDE4000CAB088 /* Cells */,
 				625F539D2710A47E007F71B5 /* MagicSetsView.swift */,
+				629578F62719AC8800DB7D52 /* MagicSetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -392,8 +441,62 @@
 			isa = PBXGroup;
 			children = (
 				629516F5270CCB0E00CAB088 /* MagicSetsTableViewCell.swift */,
+				629579A2271DAFB900DB7D52 /* MagicSetCollectionViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		6295790A271A0C2E00DB7D52 /* MagicSets */ = {
+			isa = PBXGroup;
+			children = (
+				6292BF1D270DCE2900EF9B2A /* MagicSetsCellViewModel.swift */,
+				6292BF26270DCE8100EF9B2A /* MagicSetsListViewModel.swift */,
+			);
+			path = MagicSets;
+			sourceTree = "<group>";
+		};
+		6295790B271A0C3700DB7D52 /* MagicSet */ = {
+			isa = PBXGroup;
+			children = (
+				62957905271A0BAA00DB7D52 /* MagicSetCardCellViewModel.swift */,
+				6295790C271A0C4F00DB7D52 /* MagicSetListViewModel.swift */,
+			);
+			path = MagicSet;
+			sourceTree = "<group>";
+		};
+		62957AC62722EA9500DB7D52 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				62957AC72722EAA400DB7D52 /* IdentifiableCollectionComponent.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		62957ACF2722EAF700DB7D52 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				62957AD02722EB0500DB7D52 /* UITableViewCell+Ext.swift */,
+				62957AD52722EBDE00DB7D52 /* UITableViewHeaderFooterView+Ext.swift */,
+				62957ADA2722EC0E00DB7D52 /* UICollectionReusableView+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		62957AE327231FBC00DB7D52 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				62957AE427231FCF00DB7D52 /* MagicSetsState.swift */,
+				62957AE92723265200DB7D52 /* MagicSetState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		62957AEE2723501C00DB7D52 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				62957AEF2723502B00DB7D52 /* MagicSetCompositionalLayout.swift */,
+			);
+			path = Layout;
 			sourceTree = "<group>";
 		};
 		62F1F053270B648800C6AAC4 /* Network */ = {
@@ -425,6 +528,7 @@
 		62F1F077270B782300C6AAC4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				62957AE327231FBC00DB7D52 /* State */,
 				62F1F096270B980000C6AAC4 /* Logic */,
 				62F1F078270B782800C6AAC4 /* Responses */,
 				62F1F09F270B982A00C6AAC4 /* MagicSet.swift */,
@@ -473,6 +577,7 @@
 			isa = PBXGroup;
 			children = (
 				629516C8270CAEB200CAB088 /* MagicSetsViewModelTests.swift */,
+				62957A832720A6C700DB7D52 /* MagicSetViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -616,30 +721,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62957AD62722EBDE00DB7D52 /* UITableViewHeaderFooterView+Ext.swift in Sources */,
+				62957ADB2722EC0E00DB7D52 /* UICollectionReusableView+Ext.swift in Sources */,
+				62957906271A0BAA00DB7D52 /* MagicSetCardCellViewModel.swift in Sources */,
+				62957AD12722EB0500DB7D52 /* UITableViewCell+Ext.swift in Sources */,
 				6292BF27270DCE8100EF9B2A /* MagicSetsListViewModel.swift in Sources */,
 				625F537C27109239007F71B5 /* StatefulViewModel.swift in Sources */,
 				625F539E2710A47E007F71B5 /* MagicSetsView.swift in Sources */,
 				621DA3C52707A073004A04CF /* MagicSetsViewController.swift in Sources */,
 				621DA3C12707A073004A04CF /* AppDelegate.swift in Sources */,
 				6239DB9F270DCC7600B77563 /* MagicSetsDiffableDataSource.swift in Sources */,
+				62957901271A0ADF00DB7D52 /* MagicSetSection.swift in Sources */,
 				62F1F055270B64B500C6AAC4 /* SetsResource.swift in Sources */,
 				625F53DF27174C14007F71B5 /* Card.swift in Sources */,
+				629579AE271DE05400DB7D52 /* MagicSetSectionHeaderView.swift in Sources */,
 				625F53D027170CF6007F71B5 /* MagicSetViewModel.swift in Sources */,
+				6295790D271A0C4F00DB7D52 /* MagicSetListViewModel.swift in Sources */,
+				629578F72719AC8800DB7D52 /* MagicSetView.swift in Sources */,
 				625F53E927174D29007F71B5 /* MagicSetLogicModel.swift in Sources */,
 				625F538A27109282007F71B5 /* MagicSetsCoordinator.swift in Sources */,
+				629579A3271DAFB900DB7D52 /* MagicSetCollectionViewCell.swift in Sources */,
 				62F1F098270B981100C6AAC4 /* MagicSetsLogicModel.swift in Sources */,
 				625F53C827170C17007F71B5 /* MagicSetViewController.swift in Sources */,
+				62957AC82722EAA400DB7D52 /* IdentifiableCollectionComponent.swift in Sources */,
 				62F1F087270B824200C6AAC4 /* MagicSetsLogicController.swift in Sources */,
+				629578FC271A0A9400DB7D52 /* MagicSetDiffableDataSource.swift in Sources */,
 				625F538227109265007F71B5 /* Coordinator.swift in Sources */,
 				629516F6270CCB0E00CAB088 /* MagicSetsTableViewCell.swift in Sources */,
 				621DA3C32707A073004A04CF /* SceneDelegate.swift in Sources */,
 				621DA3CB2707A073004A04CF /* magic_app.xcdatamodeld in Sources */,
 				6292BF1E270DCE2900EF9B2A /* MagicSetsCellViewModel.swift in Sources */,
 				62F1F07A270B783A00C6AAC4 /* MagicSetResponse.swift in Sources */,
+				62957AE527231FCF00DB7D52 /* MagicSetsState.swift in Sources */,
 				625F53E427174C66007F71B5 /* CardsResource.swift in Sources */,
 				6292BF17270DCDFC00EF9B2A /* MagicSetsSection.swift in Sources */,
+				62957AF02723502B00DB7D52 /* MagicSetCompositionalLayout.swift in Sources */,
 				62F1F0A0270B982A00C6AAC4 /* MagicSet.swift in Sources */,
 				625F53DA27174BFD007F71B5 /* CardsResponse.swift in Sources */,
+				62957AEA2723265200DB7D52 /* MagicSetState.swift in Sources */,
 				626A1C84270F34F90093A1BD /* MagicSetsSectionHeaderView.swift in Sources */,
 				625F53F4271752D6007F71B5 /* MagicSetLogicController.swift in Sources */,
 				62F1F065270B685A00C6AAC4 /* MagicSetsViewModel.swift in Sources */,
@@ -650,15 +769,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62957A7727207F6700DB7D52 /* MagicSetViewModelProtocolMock.swift in Sources */,
 				626A1CAA270F599C0093A1BD /* MagicSetsViewControllerTests.swift in Sources */,
 				626A1CB5270F7FFD0093A1BD /* MagicSetsViewModelProtocolMock.swift in Sources */,
 				625F53AD2714668B007F71B5 /* MagicSetsViewTests.swift in Sources */,
+				62957A7F27209BFF00DB7D52 /* MagicSetListViewModelFactory.swift in Sources */,
 				626A1C7B270F1FC50093A1BD /* MagicSetsListViewModelFactory.swift in Sources */,
 				625F53B6271469FF007F71B5 /* MagicSetsViewControllerDelegateStub.swift in Sources */,
+				62957A842720A6C700DB7D52 /* MagicSetViewModelTests.swift in Sources */,
+				62957A7227207DE900DB7D52 /* MagicSetViewControllerTests.swift in Sources */,
 				62F1F0A6270C81EC00C6AAC4 /* MagicSetsLogicControllerTests.swift in Sources */,
 				625F53D5271747BB007F71B5 /* UINavigationControllerStub.swift in Sources */,
 				629516D3270CAFA100CAB088 /* MagicNetworkProtocolMock.swift in Sources */,
 				625F53F92717681B007F71B5 /* MagicSetLogicControllerTests.swift in Sources */,
+				62957A892720AD6200DB7D52 /* MagicSetViewTests.swift in Sources */,
 				6239DB99270CF4A200B77563 /* MagicSetsViewModelTests.swift in Sources */,
 				625F53BF2714A0C4007F71B5 /* MagicSetsCoordinatorTests.swift in Sources */,
 			);

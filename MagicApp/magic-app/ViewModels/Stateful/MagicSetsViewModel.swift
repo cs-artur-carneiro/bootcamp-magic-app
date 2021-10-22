@@ -6,6 +6,7 @@ protocol MagicSetsViewModelProtocol: StatefulViewModel {
     func requestSets()
     func setSelected(at index: IndexPath)
     var sets: Published<[MagicSetsListViewModel]>.Publisher { get }
+    var state: Published<MagicSetsState>.Publisher { get }
     var selectedSet: PassthroughSubject<MagicSetsCellViewModel, Never> { get }
 }
 
@@ -14,6 +15,7 @@ final class MagicSetsViewModel {
     private let logicController: MagicSetsLogicControllerProtocol
     private var model: MagicSetsLogicModel = MagicSetsLogicModel(sets: [], canFetch: true)
     @Published private var setsViewModelsPublisher: [MagicSetsListViewModel] = []
+    @Published private var statePublisher: MagicSetsState = .loading
     private var selectedSetSubject = PassthroughSubject<MagicSetsCellViewModel, Never>()
     
     init(network: MagicNetworkProtocol = MagicNetwork(),
@@ -28,9 +30,14 @@ final class MagicSetsViewModel {
             model = update.model
             selectedSetSubject.send(setsViewModelsPublisher[index.section].sets[index.row])
         case .loadSets:
+            statePublisher = .loading
             model = update.model
             loadSets()
+        case .displayError(let message):
+            model = update.model
+            statePublisher = .error(message)
         case .none:
+            statePublisher = .usable
             model = update.model
             setsViewModelsPublisher = map(sets: model.sets)
         }
@@ -59,14 +66,14 @@ final class MagicSetsViewModel {
     private func order(sets: [MagicSet], basedOn initials: [Character]) -> [MagicSetsListViewModel] {
         var sectionId: Int = -1
         return initials.map { header in
-            var setId: Int = -1
+            var currentSetIndex: Int = -1
             // TODO: Strong ou Weak?
             let setsForHeader = self.filter(sets: sets, forHeader: header).sorted(by: { $0.name < $1.name } )
             
             let sets = setsForHeader.map { (set) -> MagicSetsCellViewModel in
-                setId += 1
-                let lastInSection = setId == setsForHeader.count - 1
-                return MagicSetsCellViewModel(id: setId, title: set.name, lastInSection: lastInSection)
+                currentSetIndex += 1
+                let lastInSection = currentSetIndex == setsForHeader.count - 1
+                return MagicSetsCellViewModel(id: set.code, title: set.name, lastInSection: lastInSection)
             }
             
             sectionId += 1
@@ -91,9 +98,9 @@ final class MagicSetsViewModel {
     private func loadSets() {
         network.request(SetsResource.all, ofType: MagicSetResponse.self) { [weak self] result in
             switch result {
-            case .success(let sets):
-                if let sets = sets {
-                    self?.handle(event: .setsLoaded(sets.sets))
+            case .success(let response):
+                if let sets = response.data?.sets {
+                    self?.handle(event: .setsLoaded(sets))
                 } else {
                     self?.handle(event: .setsLoaded([]))
                 }
@@ -115,6 +122,10 @@ extension MagicSetsViewModel: MagicSetsViewModelProtocol {
     
     var sets: Published<[MagicSetsListViewModel]>.Publisher {
         return $setsViewModelsPublisher
+    }
+    
+    var state: Published<MagicSetsState>.Publisher {
+        return $statePublisher
     }
     
     var selectedSet: PassthroughSubject<MagicSetsCellViewModel, Never> {

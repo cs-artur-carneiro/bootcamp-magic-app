@@ -35,7 +35,7 @@ final class MagicNetworkTests: XCTestCase {
         
         sut.request(Resource(url: "URL"), ofType: DecodingDummy.self) {
             if case .success(let result) = $0 {
-                dataFromResult = result
+                dataFromResult = result.data
             }
         }
         
@@ -62,7 +62,7 @@ final class MagicNetworkTests: XCTestCase {
         
         sut.request(Resource(url: "URL"), ofType: Data.self) {
             if case .success(let result) = $0 {
-                dataFromResult = result
+                dataFromResult = result.data
             }
         }
         
@@ -79,7 +79,6 @@ final class MagicNetworkTests: XCTestCase {
             .arrange(.urlResponse(nil))
             .arrange(.error(MagicNetworkError.invalidResource))
             .execute()
-        
         
         let expectedActions: [HTTPServiceMockAction] = []
         var errorFromResult: MagicNetworkError?

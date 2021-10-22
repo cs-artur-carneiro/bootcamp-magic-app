@@ -12,10 +12,13 @@ struct MagicSetsLogicController: MagicSetsLogicControllerProtocol {
         case .setsRequested:
             return MagicSetsLogicControllerUpdate(model: model, effect: .loadSets)
         case .setsLoaded(let sets):
+            guard !sets.isEmpty else {
+                return MagicSetsLogicControllerUpdate(model: model, effect: .displayError("No expansions have been found."))
+            }
             let model = MagicSetsLogicModel(sets: sets, canFetch: model.canFetch)
             return MagicSetsLogicControllerUpdate(model: model, effect: .none)
         case .setsRequestFailed:
-            return MagicSetsLogicControllerUpdate(model: model, effect: .none)
+            return MagicSetsLogicControllerUpdate(model: model, effect: .displayError("Request for expansions failed. Check your internet connection and try again."))
         case .connectionLost:
             let model = MagicSetsLogicModel(sets: model.sets, canFetch: false)
             return MagicSetsLogicControllerUpdate(model: model, effect: .none)
@@ -34,6 +37,7 @@ enum MagicSetsLogicControllerEvent {
 enum MagicSetsLogicControllerEffect: Equatable {
     case loadSet(at: IndexPath)
     case loadSets
+    case displayError(String)
     case none
 }
 
