@@ -7,6 +7,7 @@ final class MagicSetViewModelProtocolMock: MagicSetViewModelProtocol, MagicMock 
     typealias Arrangement = MagicSetViewModelProtocolMockArrangement
     
     @Published private var listViewModel: [MagicSetListViewModel] = []
+    @Published private var statePublisher: MagicSetState = .loading
     private var requestedCards: [MagicSetListViewModel]?
     private var setInfo: (name: String, id: String)? = nil
     
@@ -20,6 +21,8 @@ final class MagicSetViewModelProtocolMock: MagicSetViewModelProtocol, MagicMock 
                     self?.requestedCards = viewModels
                 case .set(let name, let id):
                     self?.setInfo = (name, id)
+                case .state(let state):
+                    self?.statePublisher = state
                 }
             }
         }
@@ -42,6 +45,10 @@ final class MagicSetViewModelProtocolMock: MagicSetViewModelProtocol, MagicMock 
         return $listViewModel
     }
     
+    var state: Published<MagicSetState>.Publisher {
+        return $statePublisher
+    }
+    
     var setName: String {
         return setInfo?.name ?? ""
     }
@@ -53,5 +60,6 @@ enum MagicSetViewModelProtocolMockAction: Equatable {
 
 enum MagicSetViewModelProtocolMockArrangement {
     case set(name: String, id: String)
+    case state(MagicSetState)
     case cards([MagicSetListViewModel])
 }

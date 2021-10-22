@@ -52,6 +52,8 @@ final class MagicSetsViewController: UIViewController {
             self?.viewModel.requestSets()
         }
         
+        setsView.bind(state: viewModel.state)
+        
         viewModel.selectedSet
             .receive(on: RunLoop.main)
             .sink { [weak self] (set) in

@@ -60,6 +60,8 @@
 		62957AD12722EB0500DB7D52 /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957AD02722EB0500DB7D52 /* UITableViewCell+Ext.swift */; };
 		62957AD62722EBDE00DB7D52 /* UITableViewHeaderFooterView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957AD52722EBDE00DB7D52 /* UITableViewHeaderFooterView+Ext.swift */; };
 		62957ADB2722EC0E00DB7D52 /* UICollectionReusableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957ADA2722EC0E00DB7D52 /* UICollectionReusableView+Ext.swift */; };
+		62957AE527231FCF00DB7D52 /* MagicSetsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957AE427231FCF00DB7D52 /* MagicSetsState.swift */; };
+		62957AEA2723265200DB7D52 /* MagicSetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62957AE92723265200DB7D52 /* MagicSetState.swift */; };
 		62F1F055270B64B500C6AAC4 /* SetsResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F054270B64B500C6AAC4 /* SetsResource.swift */; };
 		62F1F065270B685A00C6AAC4 /* MagicSetsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F064270B685A00C6AAC4 /* MagicSetsViewModel.swift */; };
 		62F1F07A270B783A00C6AAC4 /* MagicSetResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1F079270B783A00C6AAC4 /* MagicSetResponse.swift */; };
@@ -145,6 +147,8 @@
 		62957AD02722EB0500DB7D52 /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 		62957AD52722EBDE00DB7D52 /* UITableViewHeaderFooterView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewHeaderFooterView+Ext.swift"; sourceTree = "<group>"; };
 		62957ADA2722EC0E00DB7D52 /* UICollectionReusableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionReusableView+Ext.swift"; sourceTree = "<group>"; };
+		62957AE427231FCF00DB7D52 /* MagicSetsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsState.swift; sourceTree = "<group>"; };
+		62957AE92723265200DB7D52 /* MagicSetState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetState.swift; sourceTree = "<group>"; };
 		62F1F054270B64B500C6AAC4 /* SetsResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetsResource.swift; sourceTree = "<group>"; };
 		62F1F064270B685A00C6AAC4 /* MagicSetsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetsViewModel.swift; sourceTree = "<group>"; };
 		62F1F079270B783A00C6AAC4 /* MagicSetResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicSetResponse.swift; sourceTree = "<group>"; };
@@ -475,6 +479,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		62957AE327231FBC00DB7D52 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				62957AE427231FCF00DB7D52 /* MagicSetsState.swift */,
+				62957AE92723265200DB7D52 /* MagicSetState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
 		62F1F053270B648800C6AAC4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,6 +517,7 @@
 		62F1F077270B782300C6AAC4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				62957AE327231FBC00DB7D52 /* State */,
 				62F1F096270B980000C6AAC4 /* Logic */,
 				62F1F078270B782800C6AAC4 /* Responses */,
 				62F1F09F270B982A00C6AAC4 /* MagicSet.swift */,
@@ -727,10 +741,12 @@
 				621DA3CB2707A073004A04CF /* magic_app.xcdatamodeld in Sources */,
 				6292BF1E270DCE2900EF9B2A /* MagicSetsCellViewModel.swift in Sources */,
 				62F1F07A270B783A00C6AAC4 /* MagicSetResponse.swift in Sources */,
+				62957AE527231FCF00DB7D52 /* MagicSetsState.swift in Sources */,
 				625F53E427174C66007F71B5 /* CardsResource.swift in Sources */,
 				6292BF17270DCDFC00EF9B2A /* MagicSetsSection.swift in Sources */,
 				62F1F0A0270B982A00C6AAC4 /* MagicSet.swift in Sources */,
 				625F53DA27174BFD007F71B5 /* CardsResponse.swift in Sources */,
+				62957AEA2723265200DB7D52 /* MagicSetState.swift in Sources */,
 				626A1C84270F34F90093A1BD /* MagicSetsSectionHeaderView.swift in Sources */,
 				625F53F4271752D6007F71B5 /* MagicSetLogicController.swift in Sources */,
 				62F1F065270B685A00C6AAC4 /* MagicSetsViewModel.swift in Sources */,

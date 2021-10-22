@@ -120,10 +120,37 @@ final class MagicSetViewModelTests: XCTestCase {
         
         sut.fetchCards()
         
-        let expectedTimeline: [[MagicSetListViewModel]] = [[], []]
+        let expectedTimeline: [[MagicSetListViewModel]] = [[]]
         
         wait(for: [expectation], timeout: 1.0)
         
         XCTAssertEqual(viewModelsFromBinding, expectedTimeline)
+    }
+    
+    func test_stateBinding() {
+        let expectedError = MagicNetworkError.requestFailed
+        
+        networkMock
+            .setUp()
+            .arrange(.result(.failure(expectedError)))
+            .execute()
+        
+        let expectation = XCTestExpectation(description: #function)
+        
+        var stateFromBinding: [MagicSetState] = []
+        
+        sut.state
+            .sink { (state) in
+                stateFromBinding.append(state)
+                expectation.fulfill()
+            }.store(in: &cancellableStore)
+        
+        sut.fetchCards()
+        
+        wait(for: [expectation], timeout: 1.0)
+        
+        let expectedTimeline: [MagicSetState] = [.loading, .loading, .error("Request for cards failed. Check your internet connection and try again.")]
+        
+        XCTAssertEqual(stateFromBinding, expectedTimeline)
     }
 }

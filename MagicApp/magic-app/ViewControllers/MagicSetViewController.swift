@@ -24,6 +24,12 @@ final class MagicSetViewController: UIViewController {
         super.viewDidLoad()
         title = viewModel.setName
         setView.configureDataSource(for: viewModel.cardsPublisher)
+        setView.didRefresh = { [weak self] in
+            self?.viewModel.fetchCards()
+        }
+        
+        setView.bind(state: viewModel.state)
+        
         viewModel.fetchCards()
     }
     

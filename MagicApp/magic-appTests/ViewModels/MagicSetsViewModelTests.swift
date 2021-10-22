@@ -115,18 +115,45 @@ final class MagicSetsViewModelTests: XCTestCase {
         
         sut.requestSets()
         
-        let expectedTimeline: [[MagicSetsListViewModel]] = [[], []]
+        let expectedTimeline: [[MagicSetsListViewModel]] = [[]]
         
         wait(for: [expectation], timeout: 1.0)
         
         XCTAssertEqual(setsFromBinding, expectedTimeline)
     }
     
+    func test_stateBinding() {
+        let expectedError = MagicNetworkError.requestFailed
+        
+        networkMock
+            .setUp()
+            .arrange(.result(.failure(expectedError)))
+            .execute()
+        
+        let expectation = XCTestExpectation(description: #function)
+        
+        var stateFromBinding: [MagicSetsState] = []
+        
+        sut.state
+            .sink { (state) in
+                stateFromBinding.append(state)
+                expectation.fulfill()
+            }.store(in: &cancellableStore)
+        
+        sut.requestSets()
+        
+        wait(for: [expectation], timeout: 1.0)
+        
+        let expectedTimeline: [MagicSetsState] = [.loading, .loading, .error("Request for expansions failed. Check your internet connection and try again.")]
+        
+        XCTAssertEqual(stateFromBinding, expectedTimeline)
+    }
+    
     func test_setSelected() {
         let expectedResult = MagicSetResponse(sets: [MagicSet(name: "Teste", code: "Code"),
-                                                          MagicSet(name: "Teste", code: "Code"),
-                                                          MagicSet(name: "10th Edition", code: "Code"),
-                                                          MagicSet(name: "2017 Set", code: "Code")])
+                                                     MagicSet(name: "Teste", code: "Code"),
+                                                     MagicSet(name: "10th Edition", code: "Code"),
+                                                     MagicSet(name: "2017 Set", code: "Code")])
         
         networkMock
             .setUp()

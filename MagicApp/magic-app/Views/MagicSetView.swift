@@ -2,7 +2,9 @@ import UIKit
 import Combine
 
 protocol MagicSetViewProtocol: UIView {
+    var didRefresh: (() -> Void)? { get set }
     func configureDataSource(for publisher: Published<[MagicSetListViewModel]>.Publisher)
+    func bind(state: Published<MagicSetState>.Publisher)
 }
 
 final class MagicSetView: UIView, MagicSetViewProtocol {
@@ -19,9 +21,73 @@ final class MagicSetView: UIView, MagicSetViewProtocol {
         return image
     }()
     
+    private let errorMessageLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.textAlignment = .center
+        label.font = .preferredFont(forTextStyle: .headline)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let tryAgainButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        button.layer.cornerRadius = 15
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.white.cgColor
+        button.clipsToBounds = true
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Try again", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
+    private let errorStackView: UIStackView = {
+        let stack = UIStackView()
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.axis = .vertical
+        stack.alignment = .center
+        stack.isHidden = true
+        return stack
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = .white
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.startAnimating()
+        return indicator
+    }()
+    
     private let widthReference: CGFloat
     
     private var cardsDataSource: MagicSetDiffableDataSource?
+    private var cancellableStore =  Set<AnyCancellable>()
+    
+    private var state: MagicSetState = .loading {
+        didSet {
+            if oldValue != state {
+                switch state {
+                case .loading:
+                    activityIndicator.startAnimating()
+                    cardsCollectionView.isHidden = true
+                    errorStackView.isHidden = true
+                case .usable:
+                    activityIndicator.stopAnimating()
+                    cardsCollectionView.isHidden = false
+                    cardsCollectionView.isUserInteractionEnabled = true
+                    errorStackView.isHidden = true
+                case .error(let message):
+                    activityIndicator.stopAnimating()
+                    cardsCollectionView.isHidden = true
+                    errorMessageLabel.text = message
+                    errorStackView.isHidden = false
+                }
+            }
+        }
+    }
     
     init(widthReference: CGFloat = UIScreen.main.bounds.width) {
         self.widthReference = widthReference
@@ -32,6 +98,11 @@ final class MagicSetView: UIView, MagicSetViewProtocol {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc
+    private func didTapRefresh() {
+        didRefresh?()
     }
     
     private func setUp() {
@@ -45,10 +116,16 @@ final class MagicSetView: UIView, MagicSetViewProtocol {
         cardsCollectionView.register(MagicSetSectionHeaderView.self,
                                      forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                      withReuseIdentifier: MagicSetSectionHeaderView.identifier)
+        
+        tryAgainButton.addTarget(self, action: #selector(didTapRefresh), for: .touchUpInside)
     }
     
     private func setUpViewHierarchy() {
+        errorStackView.addArrangedSubview(errorMessageLabel)
+        errorStackView.addArrangedSubview(tryAgainButton)
         addSubview(backgroundImageView)
+        addSubview(activityIndicator)
+        addSubview(errorStackView)
         addSubview(cardsCollectionView)
     }
     
@@ -67,6 +144,29 @@ final class MagicSetView: UIView, MagicSetViewProtocol {
             cardsCollectionView.centerYAnchor.constraint(equalTo: guides.centerYAnchor),
             cardsCollectionView.widthAnchor.constraint(equalTo: guides.widthAnchor),
             cardsCollectionView.heightAnchor.constraint(equalTo: guides.heightAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: guides.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: guides.centerYAnchor),
+            activityIndicator.widthAnchor.constraint(equalTo: guides.widthAnchor),
+            activityIndicator.heightAnchor.constraint(equalTo: guides.heightAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            errorStackView.centerXAnchor.constraint(equalTo: guides.centerXAnchor),
+            errorStackView.centerYAnchor.constraint(equalTo: guides.centerYAnchor),
+            errorStackView.widthAnchor.constraint(equalTo: guides.widthAnchor, multiplier: 0.75),
+            errorStackView.heightAnchor.constraint(equalTo: guides.heightAnchor, multiplier: 0.5)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tryAgainButton.widthAnchor.constraint(equalTo: errorStackView.widthAnchor, multiplier: 0.75),
+            tryAgainButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        NSLayoutConstraint.activate([
+            errorMessageLabel.widthAnchor.constraint(equalTo: errorStackView.widthAnchor, multiplier: 0.75)
         ])
     }
     
@@ -96,6 +196,8 @@ final class MagicSetView: UIView, MagicSetViewProtocol {
     }
     
     // MARK: - API
+    var didRefresh: (() -> Void)?
+    
     func configureDataSource(for publisher: Published<[MagicSetListViewModel]>.Publisher) {
         cardsDataSource = MagicSetDiffableDataSource(
             cardsPublisher: publisher,
@@ -128,6 +230,14 @@ final class MagicSetView: UIView, MagicSetViewProtocol {
         }
         
         cardsCollectionView.dataSource = cardsDataSource
+    }
+    
+    func bind(state: Published<MagicSetState>.Publisher) {
+        state
+            .receive(on: RunLoop.main)
+            .sink { [weak self] state in
+                self?.state = state
+            }.store(in: &cancellableStore)
     }
 }
 

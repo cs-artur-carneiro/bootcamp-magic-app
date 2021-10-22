@@ -56,7 +56,7 @@ final class MagicSetLogicControllerTests: XCTestCase {
         let model = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [], currentPage: 0, numberOfCards: 0)
         
         let expectedModel = MagicSetLogicModel(setId: "SET", setName: "NAME", cards: [], currentPage: 0, numberOfCards: 0)
-        let expectedUpdate = Update(model: expectedModel, effect: .none)
+        let expectedUpdate = Update(model: expectedModel, effect: .displayError("Request for cards failed. Check your internet connection and try again."))
         
         let sutUpdate = sut.update(model, .cardsRequestFailed)
         

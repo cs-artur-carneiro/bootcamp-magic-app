@@ -23,6 +23,7 @@ final class MagicSetViewTests: XCTestCase {
         
         viewModel
             .setUp()
+            .arrange(.state(.usable))
             .arrange(.cards(MagicSetListViewModelFactory().make()))
             .execute()
         

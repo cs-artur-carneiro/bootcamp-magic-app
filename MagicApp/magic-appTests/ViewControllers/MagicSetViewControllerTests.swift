@@ -23,6 +23,7 @@ final class MagicSetViewControllerTests: XCTestCase {
     func test_initial_state() {
         viewModel
             .setUp()
+            .arrange(.state(.usable))
             .arrange(.set(name: "SET", id: "ID"))
             .arrange(.cards(MagicSetListViewModelFactory().make()))
             .execute()
@@ -35,6 +36,7 @@ final class MagicSetViewControllerTests: XCTestCase {
     func test_initial_state_onMaxSize() {
         viewModel
             .setUp()
+            .arrange(.state(.usable))
             .arrange(.set(name: "SET", id: "ID"))
             .arrange(.cards(MagicSetListViewModelFactory().make()))
             .execute()
@@ -52,6 +54,7 @@ final class MagicSetViewControllerTests: XCTestCase {
         
         viewModel
             .setUp()
+            .arrange(.state(.usable))
             .arrange(.set(name: "SET", id: "ID"))
             .arrange(.cards(MagicSetListViewModelFactory().make()))
             .execute()

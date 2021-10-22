@@ -8,6 +8,7 @@ final class MagicSetsViewModelProtocolMock: MagicMock {
     typealias Arrangement = MagicSetsViewModelProtocolMockArrangement
     
     @Published private var setsViewModels: [MagicSetsListViewModel] = []
+    @Published private var statePublisher: MagicSetsState = .loading
     private var selectedSetPublisher = PassthroughSubject<MagicSetsCellViewModel, Never>()
     private var requestedSets: [MagicSetsListViewModel]?
     
@@ -19,6 +20,8 @@ final class MagicSetsViewModelProtocolMock: MagicMock {
                 switch $0 {
                 case .sets(let sets):
                     self.requestedSets = sets
+                case .state(let state):
+                    self.statePublisher = state
                 }
             }
         }
@@ -33,6 +36,10 @@ final class MagicSetsViewModelProtocolMock: MagicMock {
 }
 
 extension MagicSetsViewModelProtocolMock: MagicSetsViewModelProtocol {
+    var state: Published<MagicSetsState>.Publisher {
+        return $statePublisher
+    }
+    
     func requestSets() {
         actions.append(.requestSets)
         if let sets = requestedSets {
@@ -74,4 +81,5 @@ enum MagicSetsViewModelProtocolMockAction: Equatable {
 
 enum MagicSetsViewModelProtocolMockArrangement {
     case sets([MagicSetsListViewModel])
+    case state(MagicSetsState)
 }

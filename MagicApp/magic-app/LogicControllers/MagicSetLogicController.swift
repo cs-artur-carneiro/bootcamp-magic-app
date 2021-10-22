@@ -10,9 +10,12 @@ struct MagicSetLogicController: MagicSetLogicControllerProtocol {
         case .cardsRequested:
             return MagicSetLogicControllerUpdate(model: model, effect: .loadCards)
         case .cardsLoaded(let cards, let page, let total):
+            guard !cards.isEmpty else {
+                return MagicSetLogicControllerUpdate(model: model, effect: .displayError("No cards have been found."))
+            }
             return handleCardsLoaded(cards, atPage: page, ofTotal: total, with: model)
         case .cardsRequestFailed:
-            return MagicSetLogicControllerUpdate(model: model, effect: .none)
+            return MagicSetLogicControllerUpdate(model: model, effect: .displayError("Request for cards failed. Check your internet connection and try again."))
         }
     }
     
@@ -52,6 +55,7 @@ enum MagicSetLogicControllerEvent {
 
 enum MagicSetLogicControllerEffect: Equatable {
     case loadCards
+    case displayError(String)
     case none
 }
 

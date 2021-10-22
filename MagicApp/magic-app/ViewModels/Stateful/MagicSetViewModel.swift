@@ -5,6 +5,7 @@ protocol MagicSetViewModelProtocol: StatefulViewModel {
     func fetchCards()
     var cardsPublisher: Published<[MagicSetListViewModel]>.Publisher { get }
     var setName: String { get }
+    var state: Published<MagicSetState>.Publisher { get }
 }
 
 final class MagicSetViewModel  {
@@ -12,6 +13,7 @@ final class MagicSetViewModel  {
     private let logicController: MagicSetLogicControllerProtocol
     private var model: MagicSetLogicModel
     @Published private var listViewModel: [MagicSetListViewModel] = []
+    @Published private var statePublisher: MagicSetState = .loading
     
     init(setModel: MagicSetLogicModel,
          network: MagicNetworkProtocol = MagicNetwork(),
@@ -41,8 +43,13 @@ final class MagicSetViewModel  {
         switch update.effect {
         case .loadCards:
             model = update.model
+            statePublisher = .loading
             loadCards(from: model.setId, atPage: model.currentPage)
+        case .displayError(let message):
+            model = update.model
+            statePublisher = .error(message)
         case .none:
+            statePublisher = .usable
             model = update.model
             listViewModel = map(cards: model.cards)
         }
@@ -102,6 +109,10 @@ extension MagicSetViewModel: MagicSetViewModelProtocol {
     
     var cardsPublisher: Published<[MagicSetListViewModel]>.Publisher {
         return $listViewModel
+    }
+    
+    var state: Published<MagicSetState>.Publisher {
+        return $statePublisher
     }
     
     var setName: String {

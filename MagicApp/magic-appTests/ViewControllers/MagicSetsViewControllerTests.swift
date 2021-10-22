@@ -26,6 +26,7 @@ final class MagicSetsViewControllerTests: XCTestCase {
     func test_initial_state() {
         viewModel
             .setUp()
+            .arrange(.state(.usable))
             .arrange(.sets(MagicSetsListViewModelFactory().makeNumbersAndLetters()))
             .execute()
         
@@ -37,6 +38,7 @@ final class MagicSetsViewControllerTests: XCTestCase {
     func test_initial_state_onMaxSize() {
         viewModel
             .setUp()
+            .arrange(.state(.usable))
             .arrange(.sets(MagicSetsListViewModelFactory().makeNumbersAndLetters()))
             .execute()
         
