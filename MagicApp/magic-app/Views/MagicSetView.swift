@@ -9,7 +9,8 @@ protocol MagicSetViewProtocol: UIView {
 
 final class MagicSetView: UIView, MagicSetViewProtocol {
     private lazy var cardsCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout())
+        let layout = MagicSetCompositionalLayout(widthReference: widthReference)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -168,31 +169,6 @@ final class MagicSetView: UIView, MagicSetViewProtocol {
         NSLayoutConstraint.activate([
             errorMessageLabel.widthAnchor.constraint(equalTo: errorStackView.widthAnchor, multiplier: 0.75)
         ])
-    }
-    
-    private func flowLayout() -> UICollectionViewCompositionalLayout {
-        let itemWidth = widthReference/4.17
-        let itemLayoutSize = NSCollectionLayoutSize(widthDimension: .absolute(itemWidth),
-                                                    heightDimension: .fractionalHeight(1))
-        let item = NSCollectionLayoutItem(layoutSize: itemLayoutSize)
-        
-        let groupHeight = itemWidth * 1.4
-        let groupLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                     heightDimension: .absolute(groupHeight))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupLayoutSize, subitems: [item])
-        group.interItemSpacing = .flexible(26)
-        group.contentInsets = .init(top: 0, leading: 26, bottom: 0, trailing: 26)
-        
-        let headerLayoutSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                                      heightDimension: .absolute(40))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerLayoutSize,
-                                                                 elementKind: UICollectionView.elementKindSectionHeader,
-                                                                 alignment: .top)
-        
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 18
-        section.boundarySupplementaryItems = [header]
-        return UICollectionViewCompositionalLayout(section: section)
     }
     
     // MARK: - API
