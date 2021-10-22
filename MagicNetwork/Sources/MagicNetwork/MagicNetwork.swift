@@ -46,7 +46,14 @@ public struct MagicNetwork: MagicNetworkProtocol {
     }
 
     private func makeURLRequest(from resource: Resource) -> URLRequest? {
-        guard let url = URL(string: resource.url) else {
+        guard !resource.url.isEmpty,
+              var urlComponents = URLComponents(string: resource.url) else {
+            return nil
+        }
+    
+        urlComponents.queryItems = resource.queryParameters
+        
+        guard let url = urlComponents.url else {
             return nil
         }
         

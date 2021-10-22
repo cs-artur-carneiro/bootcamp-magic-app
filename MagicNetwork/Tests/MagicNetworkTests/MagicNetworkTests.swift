@@ -80,7 +80,6 @@ final class MagicNetworkTests: XCTestCase {
             .arrange(.error(MagicNetworkError.invalidResource))
             .execute()
         
-        
         let expectedActions: [HTTPServiceMockAction] = []
         var errorFromResult: MagicNetworkError?
         
