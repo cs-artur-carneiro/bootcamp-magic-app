@@ -1,10 +1,6 @@
 import UIKit
 
 final class MagicSetSectionHeaderView: UICollectionReusableView {
-    static var identifier: String {
-        return String(describing: self)
-    }
-    
     private let cardsTypeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -1,10 +1,6 @@
 import UIKit
 
 final class MagicSetCollectionViewCell: UICollectionViewCell {
-    static var identifier: String {
-        return String(describing: self)
-    }
-    
     private let cardImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false

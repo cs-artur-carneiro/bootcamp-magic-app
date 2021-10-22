@@ -1,10 +1,6 @@
 import UIKit
 
-final class MagicSetsSectionHeaderView: UITableViewHeaderFooterView {
-    static var identifier: String {
-        return String(describing: self)
-    }
-    
+final class MagicSetsSectionHeaderView: UITableViewHeaderFooterView {    
     private let indexLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
